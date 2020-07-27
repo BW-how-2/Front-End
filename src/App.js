@@ -17,7 +17,8 @@ function App() {
         <Switch>
           
           <PrivateRoute path='/dashboard/creator' component={Creator} />
-          
+          <PrivateRoute path='/dashboard' component={User} />
+
           <Route exact path='/'>
             <Redirect to='/dashboard' />
           </Route>
