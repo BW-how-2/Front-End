@@ -1,12 +1,11 @@
 import React from 'react';
-import './App.css';
+import { Switch, Route } from 'react-router-dom';
+import './App.scss';
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-          How To Build Week
-      </header>
+      <h1>How To</h1>
     </div>
   );
 }
