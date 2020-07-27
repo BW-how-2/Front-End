@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Switch, Route, Redirect } from 'react-router-dom';
 import { UserContext } from './contexts/UserContext';
+import SignUp from './components/SignUp'
 
 import PrivateRoute from './components/PrivateRoute';
 import Creator from './components/Creator';
@@ -19,6 +20,10 @@ function App() {
           
           <Route exact path='/'>
             <Redirect to='/dashboard' />
+          </Route>
+
+          <Route exact path='/signup'>
+            <SignUp />
           </Route>
 
         </Switch>
