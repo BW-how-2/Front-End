@@ -15,6 +15,7 @@ const Creator = () => {
     const [error, setError] = useState('');
     const [formValues, setFormValues] = useState(initialFormValues);
     const [formOpen, setFormOpen] = useState(false);
+    const [disabled, setDisabled] = useState(true);
 
     const onInputChange = e => {
         e.preventDefault();
@@ -23,6 +24,18 @@ const Creator = () => {
             ...formValues,
             [name]: value
         })
+        setDisabled(checkForRequiredFields());
+    }
+
+    const checkForRequiredFields = () => {
+        const { name, description, steps, category } = formValues;
+        if (name !== '' && description !== '' && steps !== '' && category !== '') {
+            setError('');
+            return false;
+        }else {
+            setError('Please fill out all required fields');
+            return true;
+        }
     }
 
     const openForm = () => {
@@ -34,6 +47,11 @@ const Creator = () => {
         setFormValues(initialFormValues);
     }
 
+    const addHowTo = e => {
+        e.preventDefault();
+        console.log(formValues);
+    }
+
     useEffect(() => {
         
     }, []);
@@ -42,8 +60,8 @@ const Creator = () => {
         <section id='creator-dashboard'>
             <div className='form-container'>
                 {!formOpen && <button onClick={openForm}>Add New How-To</button>}
-                {formOpen && <form>
-                    <label htmlFor='name'>Title:&nbsp;</label>
+                {formOpen && <form onSubmit={addHowTo}>
+                    <label htmlFor='name'>Title*:&nbsp;</label>
                     <input 
                         type='text'
                         id='name'
@@ -51,7 +69,7 @@ const Creator = () => {
                         value={formValues.name}
                         onChange={onInputChange}
                     /><br/><br/>
-                    <label htmlFor='description'>Description:&nbsp;</label>
+                    <label htmlFor='description'>Description*:&nbsp;</label>
                     <input 
                         type='text'
                         id='description'
@@ -59,14 +77,14 @@ const Creator = () => {
                         value={formValues.description}
                         onChange={onInputChange}
                     /><br/><br/>
-                    <label htmlFor='steps'>Steps:&nbsp;</label>
+                    <label htmlFor='steps'>Steps*:&nbsp;</label>
                     <textarea 
                         id='steps'
                         name='steps'
                         value={formValues.steps}
                         onChange={onInputChange}
                     /><br/><br/>
-                    <label htmlFor='category'>Category:&nbsp;</label>
+                    <label htmlFor='category'>Category*:&nbsp;</label>
                     <input 
                         type='text'
                         id='category'
@@ -82,8 +100,9 @@ const Creator = () => {
                         value={formValues.complexity}
                         onChange={onInputChange}
                     /><br/><br/>
-                    <button>Create How-To</button>&nbsp;
+                    <button disabled={disabled}>Create How-To</button>&nbsp;
                     <button onClick={closeForm}>Cancel</button>
+                    {error && <p className='error'>{error}</p>}
                 </form>}
 
 
