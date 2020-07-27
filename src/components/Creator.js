@@ -1,5 +1,6 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useContext } from 'react';
 import { axiosWithAuth } from '../utils/axiosWithAuth';
+import { HowToContext } from '../contexts/HowToContext';
 
 const initialFormValues = {
     name: '',
@@ -10,7 +11,7 @@ const initialFormValues = {
 }
 
 const Creator = () => {
-    const [howTos, setHowTos] = useState([]);
+    const { howTos } = useContext(HowToContext);
     const [isLoading, setIsLoading] = useState(false);
     const [error, setError] = useState('');
     const [formValues, setFormValues] = useState(initialFormValues);
@@ -51,10 +52,6 @@ const Creator = () => {
         e.preventDefault();
         console.log(formValues);
     }
-
-    useEffect(() => {
-        
-    }, []);
     
     return (
         <section id='creator-dashboard'>
@@ -104,8 +101,14 @@ const Creator = () => {
                     <button onClick={closeForm}>Cancel</button>
                     {error && <p className='error'>{error}</p>}
                 </form>}
+            </div>
 
-
+            <div className='how-to-list'>
+                {howTos.length > 0 && howTos.map(howTo => {
+                    return <div key={howTo.id} className='how-to'>
+                        <h3>{howTo.name}</h3>
+                    </div>
+                })}
             </div>
         </section>
     )
