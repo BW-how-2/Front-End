@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Switch, Route } from 'react-router-dom';
+import { Switch, Route, Redirect } from 'react-router-dom';
 import { UserContext } from './contexts/UserContext';
 
 import PrivateRoute from './components/PrivateRoute';
@@ -14,7 +14,13 @@ function App() {
       <div className="App">
         <h1>How To</h1>
         <Switch>
+          
           <PrivateRoute path='/dashboard/creator' component={Creator} />
+          
+          <Route exact path='/'>
+            <Redirect to='/dashboard' />
+          </Route>
+
         </Switch>
       </div>
     </UserContext.Provider>
