@@ -14,13 +14,14 @@ const User = () => {
             <div>
                {howTos.map(howTo => {
                    return (
-                       <div className="how-to-card" key={howTo.id}>
+                   <Link key={howTo.id} to={`/howtos/${howTo.id}`}>     
+                        <div className="how-to-card" >
                             <h2>{howTo.name}</h2>
                             <h3>{howTo.description}</h3>
-                            <p>{howTo.steps}</p>
                             <p>{howTo.category}</p>
                             <p>{howTo.complexity}</p>
                        </div>
+                    </Link> 
                    )
                })} 
             </div>
