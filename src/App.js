@@ -7,6 +7,7 @@ import { axiosWithAuth } from './utils/axiosWithAuth';
 import PrivateRoute from './components/PrivateRoute';
 import Creator from './components/Creator';
 import './App.scss';
+import User from './components/User';
 
 function App() {
   const [user, setUser] = useState(null);
@@ -31,6 +32,7 @@ function App() {
           <Switch>
             
             <PrivateRoute path='/dashboard/creator' component={Creator} />
+            <PrivateRoute path='/dashboard' component={User} />
             
             <Route exact path='/'>
               <Redirect to='/dashboard' />
