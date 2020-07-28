@@ -38,6 +38,7 @@ const Login = () => {
             console.log(res);
             localStorage.setItem('token', res.data.token);
             setUser(res.data.user);
+            localStorage.setItem('user', JSON.stringify(res.data.user));
             if(res.data.user.role === 2){
                 push('/dashboard/creator');
             }else{

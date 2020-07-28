@@ -13,9 +13,12 @@ import SignUp from './components/SignUp';
 import UserList from './components/UserList';
 import './App.scss'; 
 
+const setInitialUser = () => {
+  return localStorage.getItem('user') ? JSON.parse(localStorage.getItem('user')) : null;
+}
 
 function App() {
-  const [user, setUser] = useState(null);
+  const [user, setUser] = useState(setInitialUser());
   const [howTos, setHowTos] = useState([]);
 
   useEffect(() => {
