@@ -10,6 +10,7 @@ import User from './components/User';
 import Login from './components/Login';
 import SignUp from './components/SignUp';
 import './App.scss';
+import User from './components/User';
 
 function App() {
   const [user, setUser] = useState(null);
