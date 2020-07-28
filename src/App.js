@@ -3,19 +3,20 @@ import { Switch, Route, Redirect, Link } from 'react-router-dom';
 import { UserContext } from './contexts/UserContext';
 import { HowToContext } from './contexts/HowToContext';
 import { axiosWithAuth } from './utils/axiosWithAuth';
-​
+
 import PrivateRoute from './components/PrivateRoute';
 import Creator from './components/Creator';
 import User from './components/User';
 import Login from './components/Login';
 import SignUp from './components/SignUp';
+import UserList from './components/UserList';
 import './App.scss'; 
-​
-​
+
+
 function App() {
   const [user, setUser] = useState(null);
   const [howTos, setHowTos] = useState([]);
-​
+
   useEffect(() => {
     axiosWithAuth()
       .get('/api/auth/howto')
@@ -26,7 +27,7 @@ function App() {
         console.log(err);
       });
   }, [user])
-​
+
   return (
     <UserContext.Provider value={{ user, setUser }}>
       <HowToContext.Provider value={{ howTos, setHowTos }}>
@@ -38,6 +39,7 @@ function App() {
             
             <PrivateRoute path='/dashboard/creator' component={Creator} />
             <PrivateRoute path='/dashboard' component={User} />
+            <PrivateRoute path='/userList' component={UserList} />
 ​
             <Route path="/login">
               <Login user={user}/>
@@ -58,5 +60,5 @@ function App() {
     </UserContext.Provider>
   );
 }
-​
+
 export default App;
