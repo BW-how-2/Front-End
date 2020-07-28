@@ -1,4 +1,6 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
+import { useHistory } from 'react-router-dom';
+import { UserContext } from '../contexts/UserContext';
 import axios from "axios";
 import * as yup from "yup";
 import formSchemaLogin from "../validation/formSchemaLogin";
@@ -12,14 +14,16 @@ const initialFormErrors = {
   username: "", // input text field
   password: "", // input text field
 };
-
+​
 const initialDisabled = true;
-
+​
 const Login = () => {
   const [formValues, setFormValues] = useState(initialFormValues);
   const [formErrors, setFormErrors] = useState(initialFormErrors);
   const [disabled, setDisabled] = useState(initialDisabled);
-
+  const { push } = useHistory();
+  const { setUser } = useContext(UserContext);
+​
   const onSubmit = (evt) => {
     evt.preventDefault();
     const loginUser = {
@@ -33,20 +37,21 @@ const Login = () => {
             console.log(res);
             localStorage.setItem('token', res.data.token);
             setUser(res.data.user);
+            localStorage.setItem('user', JSON.stringify(res.data.user));
             push('/dashboard');
         })
         .catch(err => {
             console.log(err.response);
         })
   }
-
+​
   const onInputChange = (evt) => {
     const { name, value } = evt.target;
     yup
       .reach(formSchemaLogin, name)
-
+​
       .validate(value)
-
+​
       .then((valid) => {
         setFormErrors({
           ...formErrors,
@@ -59,19 +64,19 @@ const Login = () => {
           [name]: err.errors[0],
         });
       });
-
+​
     setFormValues({
       ...formValues,
       [name]: value,
     });
   };
-
+​
   return (
     <form className="form container" onSubmit={onSubmit}>
       <h1>Login</h1>
       <div id="loginInputs" className="input-boxes">
         <p>logo icon goes here</p>
-
+​
         <div id="usernameInput" className="input-box">
           <label>
             Username:&nbsp;
@@ -85,7 +90,7 @@ const Login = () => {
           </label>
           <p id="usererror-username">{formErrors.username}</p>
         </div>
-
+​
         <div id="passwordInput" className="input-box">
           <label>
             Password:&nbsp;
@@ -99,11 +104,11 @@ const Login = () => {
           </label>
           <p id="usererror-password">{formErrors.password}</p>
         </div>
-        <button id="loginBtn" disabled={disabled}>
+        <button id="loginBtn">
           Login
         </button>
       </div>
     </form>
   );
 };
-export default Login 
+export default Login
