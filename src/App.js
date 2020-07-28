@@ -9,7 +9,7 @@ import Creator from './components/Creator';
 import User from './components/User';
 import Login from './components/Login';
 import SignUp from './components/SignUp';
-import './App.scss';
+import './App.scss'; 
 
 function App() {
   const [user, setUser] = useState(null);
@@ -51,7 +51,7 @@ function App() {
             </Route>
 
           </Switch>
-          
+
         </div>
       </HowToContext.Provider>
     </UserContext.Provider>
