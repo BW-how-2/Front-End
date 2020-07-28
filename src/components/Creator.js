@@ -3,16 +3,15 @@ import { axiosWithAuth } from '../utils/axiosWithAuth';
 import { HowToContext } from '../contexts/HowToContext';
 
 const initialFormValues = {
-    name: '',
-    description: '',
-    steps: '',
-    category: '',
-    complexity: ''
+    name: 'Start a new life',
+    description: 'Easiest way to begin your life anew',
+    steps: 'Step 1: Burn your passport. Step 2: Steal someone elses passport and paste your own photo on top of theirs. Step 3: Fly to Argentina and begin your new life as a wheat farmer.',
+    category: 'Travel',
+    complexity: '2 Days'
 }
 
 const Creator = () => {
-    const { howTos } = useContext(HowToContext);
-    const [isLoading, setIsLoading] = useState(false);
+    const { howTos, setHowTos } = useContext(HowToContext);
     const [error, setError] = useState('');
     const [formValues, setFormValues] = useState(initialFormValues);
     const [formOpen, setFormOpen] = useState(false);
@@ -50,7 +49,15 @@ const Creator = () => {
 
     const addHowTo = e => {
         e.preventDefault();
-        console.log(formValues);
+        axiosWithAuth()
+            .post('/api/auth/howto/creator', formValues)
+            .then(res => {
+                console.log(res);
+                setHowTos([...howTos, res.data]);
+            })
+            .catch(err => {
+                console.log(err.response);
+            })
     }
     
     return (
