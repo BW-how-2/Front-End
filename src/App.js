@@ -12,6 +12,9 @@ import SignUp from './components/SignUp';
 import HowToPage from './components/HowToPage'
 import UserList from './components/UserList';
 import './App.scss'; 
+import styled from 'styled-components'
+
+const StyledApp = styled
 
 const setInitialUser = () => {
   return localStorage.getItem('user') ? JSON.parse(localStorage.getItem('user')) : null;
@@ -33,6 +36,7 @@ function App() {
   }, [user])
 
   return (
+
     <UserContext.Provider value={{ user, setUser }}>
       <HowToContext.Provider value={{ howTos, setHowTos }}>
         <div className='App'>
@@ -66,6 +70,7 @@ function App() {
         </div>
       </HowToContext.Provider>
     </UserContext.Provider>
+
   );
 }
 export default App;

@@ -4,6 +4,25 @@ import { UserContext } from '../contexts/UserContext';
 import axios from "axios";
 import * as yup from "yup";
 import formSchemaLogin from "../validation/formSchemaLogin";
+import styled from 'styled-components'
+
+const StyledLogin = styled.form`
+border: 1px solid red;
+background:grey;
+border-radius: 5%;
+text-align: center;
+padding:1% 10%;
+margin: 1% 15%;
+
+#logoStyled {
+  font-family: 'Leckerli One', cursive, bold;
+  font-size: 3.5rem;
+  color: #FCA311;
+  border: 1px solid yellow;
+
+}
+
+`
 
 const initialFormValues = {
   username: "", // input text field
@@ -14,16 +33,17 @@ const initialFormErrors = {
   username: "", // input text field
   password: "", // input text field
 };
-​
+
+
 const initialDisabled = true;
-​
+
 const Login = () => {
   const [formValues, setFormValues] = useState(initialFormValues);
   const [formErrors, setFormErrors] = useState(initialFormErrors);
   const [disabled, setDisabled] = useState(initialDisabled);
   const { push } = useHistory();
   const { setUser } = useContext(UserContext);
-​
+
   const onSubmit = (evt) => {
     evt.preventDefault();
     const loginUser = {
@@ -44,14 +64,14 @@ const Login = () => {
             console.log(err.response);
         })
   }
-​
+
   const onInputChange = (evt) => {
     const { name, value } = evt.target;
     yup
       .reach(formSchemaLogin, name)
-​
+
       .validate(value)
-​
+
       .then((valid) => {
         setFormErrors({
           ...formErrors,
@@ -64,18 +84,20 @@ const Login = () => {
           [name]: err.errors[0],
         });
       });
-​
+
     setFormValues({
       ...formValues,
       [name]: value,
     });
   };
-​
+
   return (
-    <form className="form container" onSubmit={onSubmit}>
+    <StyledLogin className="form container" onSubmit={onSubmit}>
+      <p id='logoStyled'>How-To</p>
+      
       <h1>Login</h1>
       <div id="loginInputs" className="input-boxes">
-        <p>logo icon goes here</p>
+
 ​
         <div id="usernameInput" className="input-box">
           <label>
@@ -108,7 +130,7 @@ const Login = () => {
           Login
         </button>
       </div>
-    </form>
+    </StyledLogin>
   );
 };
 export default Login

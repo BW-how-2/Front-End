@@ -6,7 +6,8 @@ export default function Item() {
     const { howTos } = useContext(HowToContext)
     const { howtoID } = useParams() 
     const howTo = howTos.find(id => {
-        return id.id === howtoID
+        debugger
+        return id.id === parseInt(howtoID)
     })
 
 return (
