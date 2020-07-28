@@ -11,7 +11,7 @@ const PrivateCreatorRoute = ({ component: Component, ...rest }) => {
                 if (user?.role === 2) {
                     return <Component />
                 } else {
-                    return <Redirect to='/login' />
+                    return <Redirect to='/dashboard' />
                 }
             }}
         />
