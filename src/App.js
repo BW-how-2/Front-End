@@ -3,7 +3,6 @@ import { Switch, Route, Redirect, Link } from 'react-router-dom';
 import { UserContext } from './contexts/UserContext';
 import { HowToContext } from './contexts/HowToContext';
 import { axiosWithAuth } from './utils/axiosWithAuth';
-​
 import PrivateRoute from './components/PrivateRoute';
 import Creator from './components/Creator';
 import User from './components/User';
@@ -11,7 +10,7 @@ import Login from './components/Login';
 import SignUp from './components/SignUp';
 import './App.scss'; 
 ​
-​
+
 function App() {
   const [user, setUser] = useState(null);
   const [howTos, setHowTos] = useState([]);
