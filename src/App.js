@@ -17,7 +17,6 @@ function App() {
     axiosWithAuth()
       .get('/api/auth/howto')
       .then(res => {
-        console.log(res.data);
         setHowTos(res.data);
       })
       .catch(err => {
