@@ -3,7 +3,6 @@ import axios from 'axios';
 import { axiosWithAuth } from '../utils/axiosWithAuth';
 import { Switch, Link } from 'react-router-dom';
 import { HowToContext } from '../contexts/HowToContext';
-import {HowToPage} from '../components/HowToPage'
 
 const User = () => {
     const { howTos } = useContext(HowToContext);

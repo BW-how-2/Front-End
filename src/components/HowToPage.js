@@ -1,12 +1,10 @@
-import React from 'react'
-
+import React, {useContext} from 'react'
+import { HowToContext } from '../contexts/HowToContext'
 import { useParams } from 'react-router-dom'
 
-export default function Item(props) {
-    const { howTos } = props
-
+export default function Item() {
+    const { howTos } = useContext(HowToContext)
     const { howtoID } = useParams() 
-
     const howTo = howTos.find(id => {
         return id.id === howtoID
     })
