@@ -4,6 +4,7 @@ import { UserContext } from './contexts/UserContext';
 import { HowToContext } from './contexts/HowToContext';
 import { axiosWithAuth } from './utils/axiosWithAuth';
 import PrivateRoute from './components/PrivateRoute';
+import PrivateCreatorRoute from './components/PrivateCreatorRoute';
 import Creator from './components/Creator';
 import User from './components/User';
 import Login from './components/Login';
@@ -12,8 +13,12 @@ import HowToPage from './components/HowToPage'
 import UserList from './components/UserList';
 import './App.scss'; 
 
+const setInitialUser = () => {
+  return localStorage.getItem('user') ? JSON.parse(localStorage.getItem('user')) : null;
+}
+
 function App() {
-  const [user, setUser] = useState(null);
+  const [user, setUser] = useState(setInitialUser());
   const [howTos, setHowTos] = useState([]);
 
   useEffect(() => {
@@ -35,15 +40,16 @@ function App() {
           <Link to='/login'>Login</Link>
           
           <Switch>
-
-            <PrivateRoute path='/dashboard/creator' component={Creator} />
+          
+            <PrivateCreatorRoute path='/dashboard/creator' component={Creator} />
             <PrivateRoute path='/dashboard' component={User} />
+            <PrivateCreatorRoute path='/userList' component={UserList} />
 
             <Route path='/howtos/:howtoID'>
               <HowToPage />
             </Route>
-
-            <Route path='/login'>
+​
+            <Route path="/login">
               <Login user={user}/>
             </Route>
 ​

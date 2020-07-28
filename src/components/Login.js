@@ -1,7 +1,10 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
+import { useHistory } from 'react-router-dom';
 // import axios from "axios";
 import * as yup from "yup";
 import formSchemaLogin from "../validation/formSchemaLogin";
+import axios from 'axios';
+import { UserContext } from '../contexts/UserContext';
 
 const initialFormValues = {
   username: "", // input text field
@@ -19,6 +22,8 @@ const Login = () => {
   const [formValues, setFormValues] = useState(initialFormValues);
   const [formErrors, setFormErrors] = useState(initialFormErrors);
   const [disabled, setDisabled] = useState(initialDisabled);
+  const { setUser } = useContext(UserContext);
+  const { push } = useHistory();
 
   const onSubmit = (evt) => {
     evt.preventDefault();
@@ -27,6 +32,22 @@ const Login = () => {
       password: formValues.password,
     }
     console.log(loginUser)
+    axios
+        .post('https://how-to-backend.herokuapp.com/api/auth/login', loginUser)
+        .then(res => {
+            console.log(res);
+            localStorage.setItem('token', res.data.token);
+            setUser(res.data.user);
+            localStorage.setItem('user', JSON.stringify(res.data.user));
+            if(res.data.user.role === 2){
+                push('/dashboard/creator');
+            }else{
+                push('/dashboard');
+            }
+        })
+        .catch(err => {
+            console.log(err.response);
+        })
   }
 
   const onInputChange = (evt) => {
@@ -88,7 +109,8 @@ const Login = () => {
           </label>
           <p id="usererror-password">{formErrors.password}</p>
         </div>
-        <button id="loginBtn" disabled={disabled}>
+        {/* <button id="loginBtn" disabled={disabled}> */}
+        <button id="loginBtn" >
           Login
         </button>
       </div>
