@@ -8,6 +8,7 @@ import Creator from './components/Creator';
 import User from './components/User';
 import Login from './components/Login';
 import SignUp from './components/SignUp';
+import UserList from './components/UserList';
 import './App.scss'; 
 
 
@@ -37,7 +38,7 @@ function App() {
             
             <PrivateRoute path='/dashboard/creator' component={Creator} />
             <PrivateRoute path='/dashboard' component={User} />
-​
+
             <Route path="/login">
               <Login user={user}/>
             </Route>
@@ -46,26 +47,15 @@ function App() {
               <SignUp />
             </Route>
 ​
-
-            <Route path="/login">
-              <Login user={user}/>
-            </Route>
-
-            <Route exact path='/signup'>
-              <SignUp />
-            </Route>
-
             <Route exact path='/'>
               <Redirect to='/dashboard' />
             </Route>
 ​
           </Switch>
-​
 
         </div>
       </HowToContext.Provider>
     </UserContext.Provider>
   );
 }
-​
 export default App;
