@@ -7,23 +7,27 @@ import formSchemaLogin from "../validation/formSchemaLogin";
 import styled from 'styled-components'
 
 const StyledLogin = styled.form`
-border: 1px solid red;
-background:grey;
-border-radius: 5%;
-text-align: center;
-padding:1% 10%;
-margin: 1% 15%;
+border: 2px solid black;
+border-radius: 2%;
+padding-bottom: 45px;
+margin-right: 75%;
+display:flex;
+flex-direction: column;
+justify-content: center;
+align-items:center;
 
-#logoStyled {
-  font-family: 'Leckerli One', cursive, bold;
-  font-size: 3.5rem;
-  color: #FCA311;
-  border: 1px solid yellow;
-
+h1 {
+  font-size: 3 rem;
+  text-align: center;
 }
 
+#loginBtn {
+  display:flex;
+  flex-direction:column;
+  justify-content: center;
+  padding: 0 40%;
+}
 `
-
 const initialFormValues = {
   username: "", // input text field
   password: "", // input text field
@@ -93,7 +97,6 @@ const Login = () => {
 
   return (
     <StyledLogin className="form container" onSubmit={onSubmit}>
-      <p id='logoStyled'>How-To</p>
       
       <h1>Login</h1>
       <div id="loginInputs" className="input-boxes">
@@ -126,9 +129,13 @@ const Login = () => {
           </label>
           <p id="usererror-password">{formErrors.password}</p>
         </div>
-        <button id="loginBtn">
+
+      <div id='loginBtn'>
+        <button>
           Login
         </button>
+      </div>
+
       </div>
     </StyledLogin>
   );
