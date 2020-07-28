@@ -5,6 +5,7 @@ import { HowToContext } from './contexts/HowToContext';
 import { axiosWithAuth } from './utils/axiosWithAuth';
 
 import PrivateRoute from './components/PrivateRoute';
+import PrivateCreatorRoute from './components/PrivateCreatorRoute';
 import Creator from './components/Creator';
 import User from './components/User';
 import Login from './components/Login';
@@ -36,7 +37,7 @@ function App() {
           
           <Switch>
             
-            <PrivateRoute path='/dashboard/creator' component={Creator} />
+            <PrivateCreatorRoute path='/dashboard/creator' component={Creator} />
             <PrivateRoute path='/dashboard' component={User} />
 
             <Route path="/login">
