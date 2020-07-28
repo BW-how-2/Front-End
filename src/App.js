@@ -8,6 +8,7 @@ import PrivateRoute from './components/PrivateRoute';
 import Creator from './components/Creator';
 import './App.scss';
 import User from './components/User';
+import UserList from './components/UserList';
 
 function App() {
   const [user, setUser] = useState(null);
@@ -34,6 +35,7 @@ function App() {
             
             <PrivateRoute path='/dashboard/creator' component={Creator} />
             <PrivateRoute path='/dashboard' component={User} />
+            <PrivateRoute path='/userList' component={UserList} />
             
             <Route exact path='/'>
               <Redirect to='/dashboard' />

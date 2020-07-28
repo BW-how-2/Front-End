@@ -1,4 +1,4 @@
-import React, { useState, useContext, useEffect } from 'react';
+import React, { useContext } from 'react';
 import axios from 'axios';
 import { axiosWithAuth } from '../utils/axiosWithAuth';
 import { Link } from 'react-router-dom';
@@ -14,7 +14,7 @@ const User = () => {
             <div>
                {howTos.map(howTo => {
                    return (
-                       <div key={howTo.id}>
+                       <div className="how-to-card" key={howTo.id}>
                             <h2>{howTo.name}</h2>
                             <h3>{howTo.description}</h3>
                             <p>{howTo.steps}</p>
