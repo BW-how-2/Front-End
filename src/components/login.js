@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-// import axios from "axios";
+import axios from "axios";
 import * as yup from "yup";
 import formSchemaLogin from "../validation/formSchemaLogin";
 
@@ -27,6 +27,17 @@ const Login = () => {
       password: formValues.password,
     }
     console.log(loginUser)
+    axios
+        .post('https://how-to-backend.herokuapp.com/api/auth/login', loginUser)
+        .then(res => {
+            console.log(res);
+            localStorage.setItem('token', res.data.token);
+            setUser(res.data.user);
+            push('/dashboard');
+        })
+        .catch(err => {
+            console.log(err.response);
+        })
   }
 
   const onInputChange = (evt) => {
