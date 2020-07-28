@@ -9,7 +9,7 @@ import User from './components/User';
 import Login from './components/Login';
 import SignUp from './components/SignUp';
 import './App.scss'; 
-​
+
 
 function App() {
   const [user, setUser] = useState(null);
@@ -46,12 +46,22 @@ function App() {
               <SignUp />
             </Route>
 ​
+
+            <Route path="/login">
+              <Login user={user}/>
+            </Route>
+
+            <Route exact path='/signup'>
+              <SignUp />
+            </Route>
+
             <Route exact path='/'>
               <Redirect to='/dashboard' />
             </Route>
 ​
           </Switch>
 ​
+
         </div>
       </HowToContext.Provider>
     </UserContext.Provider>
