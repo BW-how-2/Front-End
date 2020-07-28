@@ -3,53 +3,60 @@ import { Switch, Route, Redirect, Link } from 'react-router-dom';
 import { UserContext } from './contexts/UserContext';
 import { HowToContext } from './contexts/HowToContext';
 import { axiosWithAuth } from './utils/axiosWithAuth';
-
+​
 import PrivateRoute from './components/PrivateRoute';
 import Creator from './components/Creator';
-import './App.scss';
 import User from './components/User';
-
-import Login from './components/Login'
-
+import Login from './components/Login';
+import SignUp from './components/SignUp';
+import './App.scss'; 
+​
+​
 function App() {
   const [user, setUser] = useState(null);
   const [howTos, setHowTos] = useState([]);
-
+​
   useEffect(() => {
     axiosWithAuth()
       .get('/api/auth/howto')
       .then(res => {
-        console.log(res.data);
         setHowTos(res.data);
       })
       .catch(err => {
         console.log(err);
       });
   }, [user])
-
+​
   return (
     <UserContext.Provider value={{ user, setUser }}>
-      <div className="App">
-        <h1>How To</h1>
-        <Link to='/login'>Login</Link>
-
-        <Switch>
+      <HowToContext.Provider value={{ howTos, setHowTos }}>
+        <div className="App">
+          <h1>How To</h1>
+          <Link to='/login'>Login</Link>
           
-          <PrivateRoute path='/dashboard/creator' component={Creator} />
-
-          <Route exact path='/'>
-            <Redirect to='/dashboard' />
-          </Route>
-
-          <Route path="/login">
-            <Login user={user}/>
-          </Route>
-
-        </Switch>
-      </div>
+          <Switch>
+            
+            <PrivateRoute path='/dashboard/creator' component={Creator} />
+            <PrivateRoute path='/dashboard' component={User} />
+​
+            <Route path="/login">
+              <Login user={user}/>
+            </Route>
+​
+            <Route exact path='/signup'>
+              <SignUp />
+            </Route>
+​
+            <Route exact path='/'>
+              <Redirect to='/dashboard' />
+            </Route>
+​
+          </Switch>
+​
+        </div>
+      </HowToContext.Provider>
     </UserContext.Provider>
-
   );
 }
-
+​
 export default App;
