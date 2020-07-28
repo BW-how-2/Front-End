@@ -1,16 +1,15 @@
 import React, { useState, useEffect } from 'react';
-import { Switch, Route, Redirect } from 'react-router-dom';
+import { Switch, Route, Redirect, Link } from 'react-router-dom';
 import { UserContext } from './contexts/UserContext';
-<<<<<<< HEAD
-import SignUp from './components/SignUp'
-=======
 import { HowToContext } from './contexts/HowToContext';
 import { axiosWithAuth } from './utils/axiosWithAuth';
->>>>>>> d4d21e9249c05452c2c4f84f52f9e8de981a2a62
 
 import PrivateRoute from './components/PrivateRoute';
 import Creator from './components/Creator';
-import './App.scss';
+// import User from './components/User';
+// import Login from './components/Login';
+import SignUp from './components/SignUp';
+import './App.scss'; 
 
 function App() {
   const [user, setUser] = useState(null);
@@ -20,7 +19,6 @@ function App() {
     axiosWithAuth()
       .get('/api/auth/howto')
       .then(res => {
-        console.log(res.data);
         setHowTos(res.data);
       })
       .catch(err => {
@@ -33,28 +31,31 @@ function App() {
       <HowToContext.Provider value={{ howTos, setHowTos }}>
         <div className="App">
           <h1>How To</h1>
+          <Link to='/login'>Login</Link>
+          
           <Switch>
             
             <PrivateRoute path='/dashboard/creator' component={Creator} />
-            
+            {/* <PrivateRoute path='/dashboard' component={User} /> */}
+​
+            <Route path="/login">
+              {/* <Login user={user}/> */}
+            </Route>
+​
+            <Route exact path='/signup'>
+              <SignUp />
+            </Route>
+​
             <Route exact path='/'>
               <Redirect to='/dashboard' />
             </Route>
-
-<<<<<<< HEAD
-          <Route exact path='/signup'>
-            <SignUp />
-          </Route>
-
-        </Switch>
-      </div>
-=======
+​
           </Switch>
+​
         </div>
       </HowToContext.Provider>
->>>>>>> d4d21e9249c05452c2c4f84f52f9e8de981a2a62
     </UserContext.Provider>
   );
 }
 
-export default App;
+export default App
