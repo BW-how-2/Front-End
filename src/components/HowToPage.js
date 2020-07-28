@@ -14,8 +14,9 @@ return (
         <div className='howto-header'>
             <h2>{howTo.name}</h2>
             <h3>{howTo.description}</h3>
-                <p>{howTo.category}</p>
-                <p>{howTo.complexity}</p>
+                <h3>{howTo.category}</h3>
+                <h3>{howTo.complexity}</h3>
+                <p>{howTo.steps}</p>
         </div>
     </div>
 )
