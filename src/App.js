@@ -43,7 +43,7 @@ function App() {
             
             <PrivateCreatorRoute path='/dashboard/creator' component={Creator} />
             <PrivateRoute path='/dashboard' component={User} />
-            <PrivateRoute path='/userList' component={UserList} />
+            <PrivateCreatorRoute path='/userList' component={UserList} />
 ​
             <Route path="/login">
               <Login user={user}/>
