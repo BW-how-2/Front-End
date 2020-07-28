@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { axiosWithAuth } from '../utils/axiosWithAuth';
+import { useParams, useHistory } from 'react-router-dom';
 
 
 //This component will return a list of all users. 
@@ -13,11 +14,13 @@ import { axiosWithAuth } from '../utils/axiosWithAuth';
 
 //NOTES: 
 // -- need to add .put
-// -- need to add .delete
-
+// -- need to make sure .delete is working once back end problem is resolved
+// add PrivateCreatorRoute to app.js route
 
 const UserList = () => {
     const [users, setUsers] = useState([]);
+    const params = useParams();
+    const history = useHistory();
 
     useEffect(() => {
         axiosWithAuth()
@@ -31,6 +34,19 @@ const UserList = () => {
         })
     }, []);
 
+    const deleteUser = e => {
+        e.preventDefault()
+        axiosWithAuth()
+        .delete(`/api/auth/users/${params.id}`)
+        .then(res => {
+            console.log(res)
+            history.push(`/userList`)
+        })
+        .catch(err => {
+            console.log(err.response)
+        })
+    }
+
     return (
         <div>
             <h2>List of All Users</h2>
@@ -42,7 +58,7 @@ const UserList = () => {
                             <p>{user.password}</p>
                             <p>{user.role}</p>
                             <button>Edit</button>
-                            <button>Delete</button>
+                            <button onClick={deleteUser}>Delete</button>
                         </div>
                     );
                 })}
