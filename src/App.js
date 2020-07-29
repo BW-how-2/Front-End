@@ -62,7 +62,7 @@ function App() {
         <StyledApp className='App'>
           <header>
             <div>
-              <img id='HowToLogo' src={HowToLogo} alt='Logo'/>
+              <a href="https://condescending-austin-39ab5f.netlify.app/index.html"><img id='HowToLogo' src={HowToLogo} alt='Logo'/></a>
             </div>
             <div>
               <nav>
