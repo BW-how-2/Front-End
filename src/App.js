@@ -11,6 +11,7 @@ import Login from './components/Login';
 import SignUp from './components/SignUp';
 import HowToPage from './components/HowToPage'
 import UserList from './components/UserList';
+import UpdateUser from './components/UpdateUser';
 import './App.scss'; 
 import styled from 'styled-components'
 import HowToLogo from './components/HowToLogo.png'
@@ -39,6 +40,8 @@ function App() {
   const [user, setUser] = useState(setInitialUser());
   const [howTos, setHowTos] = useState([]);
 
+  const [userToUpdate, setUserToUpdate] = useState({});
+
   useEffect(() => {
     axiosWithAuth()
       .get('/api/auth/howto')
@@ -51,8 +54,7 @@ function App() {
   }, [user])
 
   return (
-
-    <UserContext.Provider value={{ user, setUser }}>
+    <UserContext.Provider value={{ user, setUser, userToUpdate, setUserToUpdate }}>
       <HowToContext.Provider value={{ howTos, setHowTos }}>
         <StyledApp className='App'>
           <header>
@@ -71,6 +73,7 @@ function App() {
             <PrivateCreatorRoute path='/dashboard/creator' component={Creator} />
             <PrivateRoute path='/dashboard' component={User} />
             <PrivateCreatorRoute path='/userList' component={UserList} />
+            <PrivateCreatorRoute path='/updateUserProfile' component={UpdateUser} />
 
             <Route path='/howtos/:howtoID'>
               <HowToPage />
@@ -96,4 +99,5 @@ function App() {
 
   );
 }
+
 export default App;

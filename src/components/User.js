@@ -1,7 +1,5 @@
 import React, { useContext } from 'react';
-import axios from 'axios';
-import { axiosWithAuth } from '../utils/axiosWithAuth';
-import { Switch, Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { HowToContext } from '../contexts/HowToContext';
 
 

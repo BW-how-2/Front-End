@@ -130,13 +130,9 @@ const Login = () => {
           </label>
           <p id="usererror-password">{formErrors.password}</p>
         </div>
-
-      <div id='loginBtn'>
-        <button>
+        <button id="loginBtn">
           Login
         </button>
-      </div>
-
       </div>
     </StyledLogin>
   );
