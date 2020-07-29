@@ -11,6 +11,7 @@ import Login from './components/Login';
 import SignUp from './components/SignUp';
 import HowToPage from './components/HowToPage'
 import UserList from './components/UserList';
+import UpdateUser from './components/UpdateUser';
 import './App.scss'; 
 
 const setInitialUser = () => {
@@ -20,6 +21,8 @@ const setInitialUser = () => {
 function App() {
   const [user, setUser] = useState(setInitialUser());
   const [howTos, setHowTos] = useState([]);
+
+  const [userToUpdate, setUserToUpdate] = useState({});
 
   useEffect(() => {
     axiosWithAuth()
@@ -33,7 +36,7 @@ function App() {
   }, [user])
 
   return (
-    <UserContext.Provider value={{ user, setUser }}>
+    <UserContext.Provider value={{ user, setUser, userToUpdate, setUserToUpdate }}>
       <HowToContext.Provider value={{ howTos, setHowTos }}>
         <div className='App'>
           <h1>How To</h1>
@@ -44,6 +47,7 @@ function App() {
             <PrivateCreatorRoute path='/dashboard/creator' component={Creator} />
             <PrivateRoute path='/dashboard' component={User} />
             <PrivateCreatorRoute path='/userList' component={UserList} />
+            <PrivateCreatorRoute path='/updateUserProfile' component={UpdateUser} />
 
             <Route path='/howtos/:howtoID'>
               <HowToPage />
