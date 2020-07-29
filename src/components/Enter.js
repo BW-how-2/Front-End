@@ -3,31 +3,8 @@ import { useHistory } from 'react-router-dom';
 import { UserContext } from '../contexts/UserContext';
 import axios from "axios";
 import * as yup from "yup";
-import formSchemaLogin from "../validation/formSchemaLogin";
-import styled from 'styled-components'
+import formSchemaEnter from "../validation/formSchemaEnter";
 
-const StyledLogin = styled.form`
-border: 2px solid black;
-border-radius: 2%;
-padding-bottom: 45px;
-margin-right: 75%;
-display:flex;
-flex-direction: column;
-justify-content: center;
-align-items:center;
-
-h1 {
-  font-size: 3 rem;
-  text-align: center;
-}
-
-#loginBtn {
-  display:flex;
-  flex-direction:column;
-  justify-content: center;
-  padding: 0 40%;
-}
-`
 const initialFormValues = {
   username: "", // input text field
   password: "", // input text field
@@ -38,10 +15,9 @@ const initialFormErrors = {
   password: "", // input text field
 };
 
-
 const initialDisabled = true;
 
-const Login = () => {
+const Enter = () => {
   const [formValues, setFormValues] = useState(initialFormValues);
   const [formErrors, setFormErrors] = useState(initialFormErrors);
   const [disabled, setDisabled] = useState(initialDisabled);
@@ -50,14 +26,13 @@ const Login = () => {
 
   const onSubmit = (evt) => {
     evt.preventDefault();
-    const loginUser = {
+    const EnterUser = {
       username: formValues.username.trim(),
       password: formValues.password,
     }
-    console.log(loginUser)
-
+    console.log(EnterUser)
     axios
-        .post('https://how-to-backend.herokuapp.com/api/auth/login',loginUser)
+        .post('https://how-to-backend.herokuapp.com/api/auth/Enter', EnterUser)
         .then(res => {
             console.log(res);
             localStorage.setItem('token', res.data.token);
@@ -73,7 +48,7 @@ const Login = () => {
   const onInputChange = (evt) => {
     const { name, value } = evt.target;
     yup
-      .reach(formSchemaLogin, name)
+      .reach(formSchemaEnter, name)
 
       .validate(value)
 
@@ -97,12 +72,11 @@ const Login = () => {
   };
 
   return (
-    <StyledLogin className="form container" onSubmit={onSubmit}>
-      
-      <h1>Login</h1>
-      <div id="loginInputs" className="input-boxes">
+    <form className="form container" onSubmit={onSubmit}>
+      <h1>Enter</h1>
+      <div id="EnterInputs" className="input-boxes">
+        <p>logo icon goes here</p>
 
-​
         <div id="usernameInput" className="input-box">
           <label>
             Username:&nbsp;
@@ -116,7 +90,7 @@ const Login = () => {
           </label>
           <p id="usererror-username">{formErrors.username}</p>
         </div>
-​
+
         <div id="passwordInput" className="input-box">
           <label>
             Password:&nbsp;
@@ -130,11 +104,11 @@ const Login = () => {
           </label>
           <p id="usererror-password">{formErrors.password}</p>
         </div>
-        <button id="loginBtn">
-          Login
+        <button id="EnterBtn">
+          Enter
         </button>
       </div>
-    </StyledLogin>
+    </form>
   );
 };
-export default Login
+export default Enter; 

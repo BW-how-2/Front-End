@@ -7,7 +7,7 @@ import PrivateRoute from './components/PrivateRoute';
 import PrivateCreatorRoute from './components/PrivateCreatorRoute';
 import Creator from './components/Creator';
 import User from './components/User';
-import Login from './components/Login';
+import Enter from './components/Enter';
 import SignUp from './components/SignUp';
 import HowToPage from './components/HowToPage'
 import UserList from './components/UserList';
@@ -85,7 +85,7 @@ function App() {
             </Route>
 
             <Route path="/login">
-              <Login user={user}/>
+              <Enter user={user}/>
             </Route>
 ​
             <Route exact path='/signup'>
