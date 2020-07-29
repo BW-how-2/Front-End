@@ -18,10 +18,11 @@ import HowToLogo from './components/HowToLogo.png'
 import HowTo from './components/HowTo'
 
 const StyledApp = styled.div`
-font-family: 'Khand', sans-serif;
+font-family: Arial, Helvetica, sans-serif;
 display:flex;
 flex-direction: column;
 line-height:30px;
+text-align: center;
 
 img{
   width: 200px;
