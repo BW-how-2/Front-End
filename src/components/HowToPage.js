@@ -1,6 +1,11 @@
 import React, {useContext} from 'react'
 import { HowToContext } from '../contexts/HowToContext'
 import { useParams } from 'react-router-dom'
+import styled from 'styled-components'
+
+const StyledPage = styled.div`
+font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+`
 
 export default function Item() {
     const { howTos } = useContext(HowToContext)
@@ -11,7 +16,7 @@ export default function Item() {
     })
 
 return (
-    <div className='howto-wrapper'>
+    <StyledPage className='howto-wrapper'>
         <div className='howto-header'>
             <h2>{howTo.name}</h2>
             <h3>{howTo.description}</h3>
@@ -19,7 +24,7 @@ return (
                 <h3>{howTo.complexity}</h3>
                 <p>{howTo.steps}</p>
         </div>
-    </div>
+    </StyledPage>
 )
 
 }

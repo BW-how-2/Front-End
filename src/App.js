@@ -25,9 +25,9 @@ img{
   width: 200px;
 }
 
-nav {
+/* nav {
   border: 1px solid grey;
-}
+} */
 
 `
 
