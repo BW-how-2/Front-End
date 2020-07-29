@@ -111,13 +111,15 @@ const Creator = () => {
                 </form>}
             </div>
 
-            <div className='how-to-list'>
+            <h1 id='dashh1'>Creator Dashboard</h1>
+            <div className='howTosList'>
                 {howTos.length > 0 && howTos.map(howTo => {
-                    return <Link to={`/how-tos/${howTo.id}`} key={howTo.id}>
-                        <div className='how-to'>
-                            <h3>{howTo.name}</h3>
-                            <p>{howTo.description}</p>
-                            <p>{howTo.category}</p>
+                    return <Link id='linksDash' to={`/how-tos/${howTo.id}`} key={howTo.id}>
+                        <div className='how-to-card'>
+                            <h2>{howTo.name}</h2>
+                            <h3>{howTo.description}</h3>
+                            <p>Category: {howTo.category}</p>
+                            <p>Time to complete: {howTo.complexity}</p>
                         </div>
                     </Link>
                 })}
