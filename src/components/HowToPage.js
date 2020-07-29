@@ -4,7 +4,14 @@ import { useParams } from 'react-router-dom'
 import styled from 'styled-components'
 
 const StyledPage = styled.div`
-font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+
+    .howto-Wrapper {
+        margin: 5% 25%;
+    }
+    h2 {
+        text-align: center;
+    }
 `
 
 export default function Item() {
