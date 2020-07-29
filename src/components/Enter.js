@@ -4,6 +4,31 @@ import { UserContext } from '../contexts/UserContext';
 import axios from "axios";
 import * as yup from "yup";
 import formSchemaLogin from "../validation/formSchemaLogin";
+import styled from 'styled-components'
+
+const StyledLogin = styled.form`
+border: 2px solid black;
+border-radius: 2%;
+padding-bottom: 45px;
+margin-right: 75%;
+display:flex;
+flex-direction: column;
+justify-content: center;
+align-items:center;
+font-family: Arial, Helvetica, sans-serif;
+
+h1 {
+  font-size: 3 rem;
+  text-align: center;
+}
+
+#loginBtn {
+  display:flex;
+  flex-direction:column;
+  justify-content: center;
+  padding: 0 40%;
+}
+`
 
 const initialFormValues = {
   username: "", // input text field
@@ -31,8 +56,9 @@ const Enter = () => {
       password: formValues.password,
     }
     console.log(loginUser)
+
     axios
-        .post('https://how-to-backend.herokuapp.com/api/auth/login', loginUser)
+        .post('https://how-to-backend.herokuapp.com/api/auth/login',loginUser)
         .then(res => {
             console.log(res);
             localStorage.setItem('token', res.data.token);
@@ -72,11 +98,12 @@ const Enter = () => {
   };
 
   return (
-    <form className="form container" onSubmit={onSubmit}>
+    <StyledLogin className="form container" onSubmit={onSubmit}>
+      
       <h1>Login</h1>
-      <div id="loginInputs" className="input-boxes">
-        <p>logo icon goes here</p>
+      <div id="EnterInputs" className="input-boxes">
 
+​
         <div id="usernameInput" className="input-box">
           <label>
             Username:&nbsp;
@@ -90,7 +117,7 @@ const Enter = () => {
           </label>
           <p id="usererror-username">{formErrors.username}</p>
         </div>
-
+​
         <div id="passwordInput" className="input-box">
           <label>
             Password:&nbsp;
@@ -108,7 +135,7 @@ const Enter = () => {
           Login
         </button>
       </div>
-    </form>
+    </StyledLogin>
   );
 };
-export default Enter 
+export default Enter
