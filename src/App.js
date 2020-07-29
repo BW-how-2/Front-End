@@ -68,7 +68,7 @@ function App() {
         <StyledApp className='App'>
           <header>
             <div>
-              <img id='HowToLogo' src={HowToLogo} alt='Logo'/>
+              <a href="https://condescending-austin-39ab5f.netlify.app/index.html"><img id='HowToLogo' src={HowToLogo} alt='Logo'/></a>
             </div>
             <div>
               <nav>
@@ -106,7 +106,12 @@ function App() {
             </Route>
 ​
           </Switch>
-
+            {user && <footer>
+                <h4>Leaving so soon?</h4>
+                <Link to="/login">
+                    <button onClick={signOut}>Sign out</button>
+                </Link>
+            </footer>}
         </StyledApp>
       </HowToContext.Provider>
     </UserContext.Provider>

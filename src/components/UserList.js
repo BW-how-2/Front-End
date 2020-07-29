@@ -163,7 +163,7 @@ const UserList = () => {
                     return (
                         <div className="user-profile" key={user.id}>
                             <h3>Userame: {user.username}</h3>
-                            <p>Role:{user.role}</p>
+                            <p>Role: {user.role}</p>
                             <Button onClick={handleEdit(user)}>Edit</Button>
                             <Button onClick={() => deleteUser(user.id)}>Delete</Button>
                         </div>
