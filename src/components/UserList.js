@@ -82,10 +82,10 @@ const UserList = () => {
 
     return (
         <div>
-            <h1>Welcome back, {user.username}</h1>
+            <h1>Welcome back, {user.username}!</h1>
             <h2>Add New User </h2>
             <form onSubmit={handleSubmit}>
-                <p>Please enter a username.</p>
+                <p>Please enter a username</p>
                 <input
                 type="text"
                 name="username"
@@ -93,7 +93,7 @@ const UserList = () => {
                 value={addUser.username}
                 onChange={handleChange}
                 />
-                <p>Please enter a password.</p>
+                <p>Please enter a password</p>
                 <input
                 type="password"
                 name="password"
