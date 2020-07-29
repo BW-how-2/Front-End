@@ -48,22 +48,6 @@ const Login = () => {
   const { push } = useHistory();
   const { setUser } = useContext(UserContext);
 
-  useEffect(() =>{
-    axios
-      .get('https://how-to-backend.herokuapp.com/api/auth/login')
-      // .post(loginUser)
-      .then(res => {
-          console.log(res);
-          localStorage.setItem('token', res.data.token);
-          setUser(res.data.user);
-          localStorage.setItem('user', JSON.stringify(res.data.user));
-          push('/dashboard');
-      })
-      .catch(err => {
-          console.log(err.response);
-      })
-  })
-
   const onSubmit = (evt) => {
     evt.preventDefault();
     const loginUser = {
@@ -71,6 +55,19 @@ const Login = () => {
       password: formValues.password,
     }
     console.log(loginUser)
+
+    axios
+        .post('https://how-to-backend.herokuapp.com/api/auth/login',loginUser)
+        .then(res => {
+            console.log(res);
+            localStorage.setItem('token', res.data.token);
+            setUser(res.data.user);
+            localStorage.setItem('user', JSON.stringify(res.data.user));
+            push('/dashboard');
+        })
+        .catch(err => {
+            console.log(err.response);
+        })
   }
 
   const onInputChange = (evt) => {

@@ -13,7 +13,6 @@ const StyledPage = styled.div`
         text-align: center;
     }
 `
-
 export default function Item() {
     const { howTos } = useContext(HowToContext)
     const { howtoID } = useParams() 
