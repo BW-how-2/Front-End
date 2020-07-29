@@ -10,7 +10,7 @@ const StyledLogin = styled.form`
 border: 2px solid black;
 border-radius: 2%;
 padding-bottom: 45px;
-margin-right: 75%;
+margin: 0 35%;
 display:flex;
 flex-direction: column;
 justify-content: center;
@@ -26,7 +26,8 @@ h1 {
   display:flex;
   flex-direction:column;
   justify-content: center;
-  padding: 0 40%;
+  align-items: center;
+  padding: 0 5%;
 }
 `
 
@@ -98,7 +99,7 @@ const Enter = () => {
   };
 
   return (
-    <StyledLogin className="form container" onSubmit={onSubmit}>
+    <StyledLogin className="formContainer" onSubmit={onSubmit}>
       
       <h1>Login</h1>
       <div id="EnterInputs" className="input-boxes">

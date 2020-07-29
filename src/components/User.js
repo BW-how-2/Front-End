@@ -8,7 +8,7 @@ const User = () => {
  
     return (
         <div>
-            <h1>Dashboard</h1>
+            <h1 id='dashh1'>Dashboard</h1>
             <div id='howTosList'>
                {howTos.map(howTo => {
                    return (

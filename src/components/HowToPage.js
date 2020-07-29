@@ -15,7 +15,8 @@ const initialFormValues = {
 
 const StyledPage = styled.div`
     font-family: Arial, Helvetica, sans-serif;
-    box-shadow: 3px 1px 1px grey;
+    border-radius: 3%;
+    box-shadow: 2px 2px 10px lightgrey;
     margin: 5% 15%;
     padding: 1% 5%;
     background:#EDF4F5;

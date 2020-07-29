@@ -3,11 +3,11 @@ import * as yup from 'yup'
 const formSchemaLogin = yup.object().shape({
     username: yup
         .string()
-        .min(5, "Please add your username")
+        .min(3, "Please add your username")
         .required("Username is required"),
     password: yup
         .string()
-        .min(5, "Please add your password")
+        .min(3, "Please add your password")
         .required("Password is required")
 })
 
