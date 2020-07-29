@@ -11,7 +11,7 @@ import Login from './components/Login';
 import SignUp from './components/SignUp';
 import HowToPage from './components/HowToPage'
 import UserList from './components/UserList';
-import UpdateUserProfile from './components/UpdateUserProfile';
+import UpdateUser from './components/UpdateUserProfile';
 import './App.scss'; 
 
 const setInitialUser = () => {
