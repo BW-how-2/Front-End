@@ -17,6 +17,7 @@ const Creator = () => {
     const [formValues, setFormValues] = useState(initialFormValues);
     const [formOpen, setFormOpen] = useState(false);
     const [disabled, setDisabled] = useState(true);
+    const [searchQuery, setSearchQuery] = useState('');
 
     const onInputChange = e => {
         e.preventDefault();
@@ -26,6 +27,11 @@ const Creator = () => {
             [name]: value
         })
         setDisabled(checkForRequiredFields());
+    }
+
+    const onSearchQueryChange = e => {
+        const { value } = e.target;
+        setSearchQuery(value);
     }
 
     const checkForRequiredFields = () => {
@@ -112,16 +118,26 @@ const Creator = () => {
             </div>
 
             <h1 id='dashh1'>Creator Dashboard</h1>
+            <input 
+                type='text'
+                value={searchQuery}
+                onChange={onSearchQueryChange}
+            />
             <div className='howTosList'>
                 {howTos.length > 0 && howTos.map(howTo => {
-                    return <Link id='linksDash' to={`/how-tos/${howTo.id}`} key={howTo.id}>
-                        <div className='how-to-card'>
-                            <h2>{howTo.name}</h2>
-                            <h3>{howTo.description}</h3>
-                            <p>Category: {howTo.category}</p>
-                            <p>Time to complete: {howTo.complexity}</p>
-                        </div>
-                    </Link>
+                    const searchString = `${howTo.name} ${howTo.description} ${howTo.category}`;
+                    if (searchString.toLowerCase().includes(searchQuery.toLowerCase()) || searchQuery === '') {
+                        return <Link id='linksDash' to={`/how-tos/${howTo.id}`} key={howTo.id}>
+                                    <div className='how-to-card'>
+                                        <h2>{howTo.name}</h2>
+                                        <h3>{howTo.description}</h3>
+                                        <p>Category: {howTo.category}</p>
+                                        <p>Time to complete: {howTo.complexity}</p>
+                                    </div>
+                                </Link> 
+                    } else {
+                        return ''
+                    }
                 })}
             </div>
         </section>
