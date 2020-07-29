@@ -4,11 +4,11 @@ import { HowToContext } from '../contexts/HowToContext';
 import { Link } from 'react-router-dom';
 
 const initialFormValues = {
-    name: 'Start a new life',
-    description: 'Easiest way to begin your life anew',
-    steps: 'Step 1: Burn your passport. Step 2: Steal someone elses passport and paste your own photo on top of theirs. Step 3: Fly to Argentina and begin your new life as a wheat farmer.',
-    category: 'Travel',
-    complexity: '2 Days'
+    name: '',
+    description: '',
+    steps: '',
+    category: '',
+    complexity: ''
 }
 
 const Creator = () => {
