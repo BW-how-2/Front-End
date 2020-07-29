@@ -1,6 +1,7 @@
 import React, { useState, useContext } from 'react';
 import { axiosWithAuth } from '../utils/axiosWithAuth';
 import { HowToContext } from '../contexts/HowToContext';
+import { Link } from 'react-router-dom';
 
 const initialFormValues = {
     name: 'Start a new life',
@@ -112,9 +113,13 @@ const Creator = () => {
 
             <div className='how-to-list'>
                 {howTos.length > 0 && howTos.map(howTo => {
-                    return <div key={howTo.id} className='how-to'>
-                        <h3>{howTo.name}</h3>
-                    </div>
+                    return <Link to={`/how-tos/${howTo.id}`} key={howTo.id}>
+                        <div className='how-to'>
+                            <h3>{howTo.name}</h3>
+                            <p>{howTo.description}</p>
+                            <p>{howTo.category}</p>
+                        </div>
+                    </Link>
                 })}
             </div>
         </section>
