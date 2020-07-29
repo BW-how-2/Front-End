@@ -14,13 +14,28 @@ const initialFormValues = {
 }
 
 const StyledPage = styled.div`
-    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-family: Arial, Helvetica, sans-serif;
+    border: 1px solid black;
+    margin: 5% 15%;
+    padding: 1% 5%;
+    background:#EDF4F5;
 
-    .howto-Wrapper {
-        margin: 5% 25%;
-    }
     h2 {
         text-align: center;
+        text-transform: uppercase;
+        letter-spacing: 2px;
+        font-size: 2.5em;
+    }
+
+    h3{
+        font-style:italic;
+        letter-spacing: 1px;
+    }
+
+    #howToinfo{
+        display:flex;
+        flex-direction: row;
+        justify-content: space-evenly
     }
 `
 export default function Item() {
@@ -102,10 +117,12 @@ export default function Item() {
 return (
     <StyledPage className='howto-wrapper'>
         {howTo && <div className='howto-header'>
-            <h2>{howTo.name}</h2>
+            <h2>HOW TO {howTo.name}</h2>
             <h3>{howTo.description}</h3>
-            <h3>{howTo.category}</h3>
-            <h3>{howTo.complexity}</h3>
+            <div id='howToinfo'>
+            <h4>CATEGORY: {howTo.category}</h4>
+            <h4>DIFFICULTY: {howTo.complexity}</h4>
+            </div>
             <p>{howTo.steps}</p>
         </div>}
         {user.role === 2 && <div className='edit-delete-buttons'>
@@ -157,5 +174,4 @@ return (
         </form>}
     </StyledPage>
 )
-
 }

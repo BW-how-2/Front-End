@@ -15,6 +15,7 @@ display:flex;
 flex-direction: column;
 justify-content: center;
 align-items:center;
+font-family: Arial, Helvetica, sans-serif;
 
 h1 {
   font-size: 3 rem;

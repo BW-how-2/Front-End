@@ -24,7 +24,6 @@ const User = () => {
                })} 
             </div>
         
-
             <div>
                 <h4>Already have an account?</h4>
                 <Link to="/login">
