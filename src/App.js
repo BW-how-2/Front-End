@@ -13,6 +13,24 @@ import HowToPage from './components/HowToPage'
 import UserList from './components/UserList';
 import UpdateUser from './components/UpdateUser';
 import './App.scss'; 
+import styled from 'styled-components'
+import HowToLogo from './components/HowToLogo.png'
+
+const StyledApp = styled.div`
+font-family: 'Khand', sans-serif;
+display:flex;
+flex-direction: column;
+line-height:30px;
+
+img{
+  width: 200px;
+}
+
+/* nav {
+  border: 1px solid grey;
+} */
+
+`
 
 const setInitialUser = () => {
   return localStorage.getItem('user') ? JSON.parse(localStorage.getItem('user')) : null;
@@ -38,9 +56,17 @@ function App() {
   return (
     <UserContext.Provider value={{ user, setUser, userToUpdate, setUserToUpdate }}>
       <HowToContext.Provider value={{ howTos, setHowTos }}>
-        <div className='App'>
-          <h1>How To</h1>
-          <Link to='/login'>Login</Link>
+        <StyledApp className='App'>
+          <header>
+            <div>
+              <img id='HowToLogo' src={HowToLogo} alt='Logo'/>
+            </div>
+            <div>
+              <nav>
+              <Link to='/login'>Login</Link>
+              </nav>
+            </div>
+          </header>
           
           <Switch>
           
@@ -67,9 +93,10 @@ function App() {
 ​
           </Switch>
 
-        </div>
+        </StyledApp>
       </HowToContext.Provider>
     </UserContext.Provider>
+
   );
 }
 
