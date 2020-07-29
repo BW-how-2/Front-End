@@ -3,7 +3,7 @@ import { useHistory } from 'react-router-dom';
 import { UserContext } from '../contexts/UserContext';
 import axios from "axios";
 import * as yup from "yup";
-import formSchemaEnter from "../validation/formSchemaEnter";
+import formSchemaLogin from "../validation/formSchemaLogin";
 
 const initialFormValues = {
   username: "", // input text field
@@ -26,13 +26,13 @@ const Enter = () => {
 
   const onSubmit = (evt) => {
     evt.preventDefault();
-    const EnterUser = {
+    const loginUser = {
       username: formValues.username.trim(),
       password: formValues.password,
     }
-    console.log(EnterUser)
+    console.log(loginUser)
     axios
-        .post('https://how-to-backend.herokuapp.com/api/auth/Enter', EnterUser)
+        .post('https://how-to-backend.herokuapp.com/api/auth/login', loginUser)
         .then(res => {
             console.log(res);
             localStorage.setItem('token', res.data.token);
@@ -48,7 +48,7 @@ const Enter = () => {
   const onInputChange = (evt) => {
     const { name, value } = evt.target;
     yup
-      .reach(formSchemaEnter, name)
+      .reach(formSchemaLogin, name)
 
       .validate(value)
 
@@ -73,8 +73,8 @@ const Enter = () => {
 
   return (
     <form className="form container" onSubmit={onSubmit}>
-      <h1>Enter</h1>
-      <div id="EnterInputs" className="input-boxes">
+      <h1>Login</h1>
+      <div id="loginInputs" className="input-boxes">
         <p>logo icon goes here</p>
 
         <div id="usernameInput" className="input-box">
@@ -104,11 +104,11 @@ const Enter = () => {
           </label>
           <p id="usererror-password">{formErrors.password}</p>
         </div>
-        <button id="EnterBtn">
-          Enter
+        <button id="loginBtn">
+          Login
         </button>
       </div>
     </form>
   );
 };
-export default Enter; 
+export default Enter 
