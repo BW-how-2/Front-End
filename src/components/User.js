@@ -2,7 +2,6 @@ import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import { HowToContext } from '../contexts/HowToContext';
 
-
 const User = () => {
     const { howTos } = useContext(HowToContext);
  
@@ -30,9 +29,10 @@ const User = () => {
                 <Link to="/login">
                     <button>Login</button>
                 </Link>
+
             </div>
-            
         </div>
+        
     )
 };
 

@@ -100,7 +100,7 @@ const UserList = () => {
                 placeholder="Password..."
                 value={addUser.password}
                 onChange={handleChange}
-                 />
+                />
                 <p>Please select a role:</p>
                 <select name='role' value={addUser.role} onChange={handleChange}>
                     <option disabled value=''>Select Role</option>
