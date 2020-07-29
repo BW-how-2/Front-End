@@ -23,9 +23,9 @@ align-items: center;
 
 const StyledAddForm = styled.form`
 border: 2px solid black;
-border-radius: 5%;
-padding-bottom: 45px;
-width: 50%;
+border-radius: 10px;
+padding-bottom: 25px;
+width: 500px;
 text-align: center;
 `;
 
@@ -35,8 +35,14 @@ const StyledListOfUsers = styled.div`
     justify-content: center;
     align-items: center;
     width: 100%;
-    margin: 4%;
+    margin: 4% 20%;
     background-color: #EDF4F5;
+
+    .user-items{
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
 `;
 
 const Button = styled.button`
@@ -44,7 +50,7 @@ const Button = styled.button`
     background-color: white;
     margin: 3%;
     padding: 1%;
-    border-radius: 10%;
+    border-radius: 5px;
 
     &:hover{
         background-color: orange;
@@ -152,7 +158,7 @@ const UserList = () => {
             </StyledAddForm>
             <StyledListOfUsers>
             <h2>List of All Users</h2>
-            <div>
+            <div className="user-items">
                 {users.map(user => {
                     return (
                         <div className="user-profile" key={user.id}>
