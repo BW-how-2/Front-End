@@ -9,15 +9,15 @@ const User = () => {
     return (
         <div>
             <h2>Dashboard</h2>
-            <div>
+            <div id='howTosList'>
                {howTos.map(howTo => {
                    return (
-                   <Link key={howTo.id} to={`/howtos/${howTo.id}`}>     
+                   <Link id ='linksDash' key={howTo.id} to={`/howtos/${howTo.id}`}>     
                         <div className="how-to-card" >
                             <h2>{howTo.name}</h2>
                             <h3>{howTo.description}</h3>
-                            <p>{howTo.category}</p>
-                            <p>{howTo.complexity}</p>
+                            <p>Category: {howTo.category}</p>
+                            <p>Time To Complete: {howTo.complexity}</p>
                        </div>
                     </Link> 
                    )

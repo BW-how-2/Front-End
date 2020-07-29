@@ -113,15 +113,14 @@ export default function Item() {
             })
     }
 
-
 return (
     <StyledPage className='howto-wrapper'>
         {howTo && <div className='howto-header'>
             <h2>HOW TO {howTo.name}</h2>
             <h3>{howTo.description}</h3>
             <div id='howToinfo'>
-            <h4>CATEGORY: {howTo.category}</h4>
-            <h4>DIFFICULTY: {howTo.complexity}</h4>
+            <h4>Category: {howTo.category}</h4>
+            <h4>Time To Complete: {howTo.complexity}</h4>
             </div>
             <p>{howTo.steps}</p>
         </div>}
