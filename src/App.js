@@ -16,6 +16,7 @@ import './App.scss';
 import styled from 'styled-components'
 import HowToLogo from './components/HowToLogo.png'
 import HowTo from './components/HowTo'
+import CreatorNav from './components/CreatorNav'
 
 const StyledApp = styled.div`
 font-family: Arial, Helvetica, sans-serif;
@@ -65,7 +66,8 @@ function App() {
             </div>
             <div>
               <nav>
-              <Link to='/login'>Login</Link>
+                <Link to='/login'>Login</Link>
+                {user.role === 2 && <CreatorNav />}
               </nav>
             </div>
           </header>

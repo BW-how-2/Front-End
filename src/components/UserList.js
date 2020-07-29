@@ -2,6 +2,7 @@ import React, { useEffect, useState, useContext } from 'react';
 import { axiosWithAuth } from '../utils/axiosWithAuth';
 import { useHistory } from 'react-router-dom';
 import { UserContext } from '../contexts/UserContext';
+import styled from 'styled-components';
 
 //This component will return a list of all users. 
 // .get ..... /api/auth/users
@@ -12,6 +13,44 @@ import { UserContext } from '../contexts/UserContext';
 //Client will have the ability to delete their user info
 // .delete ..... 	/api/auth/users/:id
 
+const StyledUserListPage = styled.div`
+width: auto;
+display: flex;
+flex-direction: column;
+justify-content: center;
+align-items: center;
+`;
+
+const StyledAddForm = styled.form`
+border: 2px solid black;
+border-radius: 5%;
+padding-bottom: 45px;
+width: 50%;
+text-align: center;
+`;
+
+const StyledListOfUsers = styled.div`
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    margin: 4%;
+    background-color: #EDF4F5;
+`;
+
+const Button = styled.button`
+    border: 1px solid black;
+    background-color: white;
+    margin: 3%;
+    padding: 1%;
+    border-radius: 10%;
+
+    &:hover{
+        background-color: orange;
+        color: white;
+    }
+`;
 
 const initialValues = {
     username: "",
@@ -83,10 +122,10 @@ const UserList = () => {
     }
 
     return (
-        <div>
+        <StyledUserListPage>
             <h1>Welcome back, {user.username}!</h1>
             <h2>Add New User </h2>
-            <form onSubmit={handleSubmit}>
+            <StyledAddForm onSubmit={handleSubmit}>
                 <p>Please enter a username</p>
                 <input
                 type="text"
@@ -109,8 +148,9 @@ const UserList = () => {
                     <option value='user'>User</option>
                     <option value='creator'>Creator</option>
                 </select>
-                <button onClick={handleSubmit}>Submit</button>
-            </form>
+                <Button onClick={handleSubmit}>Submit</Button>
+            </StyledAddForm>
+            <StyledListOfUsers>
             <h2>List of All Users</h2>
             <div>
                 {users.map(user => {
@@ -118,13 +158,14 @@ const UserList = () => {
                         <div className="user-profile" key={user.id}>
                             <h3>Userame: {user.username}</h3>
                             <p>Role:{user.role}</p>
-                            <button onClick={handleEdit(user)}>Edit</button>
-                            <button onClick={() => deleteUser(user.id)}>Delete</button>
+                            <Button onClick={handleEdit(user)}>Edit</Button>
+                            <Button onClick={() => deleteUser(user.id)}>Delete</Button>
                         </div>
                     );
                 })}
             </div>
-        </div>
+            </StyledListOfUsers>
+        </StyledUserListPage>
     );
 };
 
