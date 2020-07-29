@@ -3,17 +3,26 @@ import { Switch, Route, Redirect, Link } from 'react-router-dom';
 import { UserContext } from './contexts/UserContext';
 import { HowToContext } from './contexts/HowToContext';
 import { axiosWithAuth } from './utils/axiosWithAuth';
-
 import PrivateRoute from './components/PrivateRoute';
+import PrivateCreatorRoute from './components/PrivateCreatorRoute';
 import Creator from './components/Creator';
-// import User from './components/User';
-// import Login from './components/Login';
+import User from './components/User';
+import Login from './components/Login';
 import SignUp from './components/SignUp';
+import HowToPage from './components/HowToPage'
+import UserList from './components/UserList';
+import UpdateUserProfile from './components/UpdateUserProfile';
 import './App.scss'; 
 
+const setInitialUser = () => {
+  return localStorage.getItem('user') ? JSON.parse(localStorage.getItem('user')) : null;
+}
+
 function App() {
-  const [user, setUser] = useState(null);
+  const [user, setUser] = useState(setInitialUser());
   const [howTos, setHowTos] = useState([]);
+
+  const [userToUpdate, setUserToUpdate] = useState({});
 
   useEffect(() => {
     axiosWithAuth()
@@ -27,19 +36,25 @@ function App() {
   }, [user])
 
   return (
-    <UserContext.Provider value={{ user, setUser }}>
+    <UserContext.Provider value={{ user, setUser, userToUpdate, setUserToUpdate }}>
       <HowToContext.Provider value={{ howTos, setHowTos }}>
-        <div className="App">
+        <div className='App'>
           <h1>How To</h1>
           <Link to='/login'>Login</Link>
           
           <Switch>
-            
-            <PrivateRoute path='/dashboard/creator' component={Creator} />
-            {/* <PrivateRoute path='/dashboard' component={User} /> */}
+          
+            <PrivateCreatorRoute path='/dashboard/creator' component={Creator} />
+            <PrivateRoute path='/dashboard' component={User} />
+            <PrivateCreatorRoute path='/userList' component={UserList} />
+            <PrivateCreatorRoute path='/updateUserProfile' component={UpdateUser} />
+
+            <Route path='/howtos/:howtoID'>
+              <HowToPage />
+            </Route>
 ​
             <Route path="/login">
-              {/* <Login user={user}/> */}
+              <Login user={user}/>
             </Route>
 ​
             <Route exact path='/signup'>
@@ -51,11 +66,11 @@ function App() {
             </Route>
 ​
           </Switch>
-​
+
         </div>
       </HowToContext.Provider>
     </UserContext.Provider>
   );
 }
 
-export default App
+export default App;

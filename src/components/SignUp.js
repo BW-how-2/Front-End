@@ -69,4 +69,4 @@ export default function SignUp(){
                 <button onClick={handleSubmit}>Submit</button>
         </form>
     )
-}
+} 
