@@ -12,11 +12,6 @@ import { UserContext } from '../contexts/UserContext';
 //Client will have the ability to delete their user info
 // .delete ..... 	/api/auth/users/:id
 
-//NOTES: 
-// -- need to add .put - adding this to UpdateUser.js
-// -- need to make sure .delete is working once back end problem is resolved
-// add PrivateCreatorRoute to app.js route
-// -- need to add .post with form to add new user
 
 const initialValues = {
     username: "",
@@ -73,6 +68,13 @@ const UserList = () => {
         axiosWithAuth()
         .delete(`/api/auth/users/${id}`)
         .then(() => {
+            setUsers(users.filter(user => {
+            if (user.id === id) {
+                return false
+            } else {
+                return true
+            }
+            }))
             history.push(`/userList`)
         })
         .catch(err => {
