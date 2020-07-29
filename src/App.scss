@@ -13,7 +13,8 @@
 }
 
 .how-to-card{
-    box-shadow: 3px 1px 1px grey;
+    border-radius: 3%;
+    box-shadow: 2px 2px 10px lightgrey;
     font-family: Arial, Helvetica, sans-serif;
     margin: 5% 25%;
     padding: 2% 0%;
@@ -22,13 +23,12 @@
     color:black;
 }
 
-h1 {
+#dashh1 {
     text-align: center;
     text-transform: uppercase;
     letter-spacing: .5px;
     font-size: 1.5em;
-    background-color: #BFBFBB;
-    padding: 5% 0;
+    padding: 1% 0;
 }
 
 h2 {

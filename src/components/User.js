@@ -2,13 +2,12 @@ import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import { HowToContext } from '../contexts/HowToContext';
 
-
 const User = () => {
     const { howTos } = useContext(HowToContext);
  
     return (
         <div>
-            <h1>Dashboard</h1>
+            <h1 id='dashh1'>Dashboard</h1>
             <div id='howTosList'>
                {howTos.map(howTo => {
                    return (
