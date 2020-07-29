@@ -7,7 +7,7 @@ import PrivateRoute from './components/PrivateRoute';
 import PrivateCreatorRoute from './components/PrivateCreatorRoute';
 import Creator from './components/Creator';
 import User from './components/User';
-import Login from './components/Login';
+import Enter from './components/Enter';
 import SignUp from './components/SignUp';
 import HowToPage from './components/HowToPage'
 import UserList from './components/UserList';
@@ -15,6 +15,7 @@ import UpdateUser from './components/UpdateUser';
 import './App.scss'; 
 import styled from 'styled-components'
 import HowToLogo from './components/HowToLogo.png'
+import HowTo from './components/HowTo'
 
 const StyledApp = styled.div`
 font-family: Arial, Helvetica, sans-serif;
@@ -79,9 +80,13 @@ function App() {
             <Route path='/howtos/:howtoID'>
               <HowToPage />
             </Route>
-​
+
+            <Route path='/how-tos/:howToId'>
+              <HowTo />
+            </Route>
+
             <Route path="/login">
-              <Login user={user}/>
+              <Enter user={user}/>
             </Route>
 ​
             <Route exact path='/signup'>

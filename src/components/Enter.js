@@ -29,6 +29,7 @@ h1 {
   padding: 0 40%;
 }
 `
+
 const initialFormValues = {
   username: "", // input text field
   password: "", // input text field
@@ -41,7 +42,7 @@ const initialFormErrors = {
 
 const initialDisabled = true;
 
-const Login = () => {
+const Enter = () => {
   const [formValues, setFormValues] = useState(initialFormValues);
   const [formErrors, setFormErrors] = useState(initialFormErrors);
   const [disabled, setDisabled] = useState(initialDisabled);
@@ -100,7 +101,7 @@ const Login = () => {
     <StyledLogin className="form container" onSubmit={onSubmit}>
       
       <h1>Login</h1>
-      <div id="loginInputs" className="input-boxes">
+      <div id="EnterInputs" className="input-boxes">
 
 ​
         <div id="usernameInput" className="input-box">
@@ -137,4 +138,4 @@ const Login = () => {
     </StyledLogin>
   );
 };
-export default Login
+export default Enter
