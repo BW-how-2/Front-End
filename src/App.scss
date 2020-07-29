@@ -11,12 +11,22 @@
 }
 
 .how-to-card{
-    border: 1px solid black;
+    box-shadow: 3px 1px 1px grey;
     font-family: Arial, Helvetica, sans-serif;
-    margin: 2% 25%;
+    margin: 5% 25%;
+    padding: 2% 0%;
     width: auto;
     background-color: #EDF4F5;
     color:black;
+}
+
+h1 {
+    text-align: center;
+    text-transform: uppercase;
+    letter-spacing: .5px;
+    font-size: 1.5em;
+    background-color: #BFBFBB;
+    padding: 5% 0;
 }
 
 h2 {
