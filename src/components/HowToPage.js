@@ -1,8 +1,9 @@
-import React, { useContext, useState } from 'react'
+import React, { useContext, useState, useEffect } from 'react'
 import { HowToContext } from '../contexts/HowToContext'
 import { UserContext } from '../contexts/UserContext'
 import { useParams, useHistory } from 'react-router-dom'
 import { axiosWithAuth } from '../utils/axiosWithAuth'
+import styled from 'styled-components'
 
 const initialFormValues = {
     name: '',
@@ -12,15 +13,32 @@ const initialFormValues = {
     complexity: ''
 }
 
+const StyledPage = styled.div`
+    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+
+    .howto-Wrapper {
+        margin: 5% 25%;
+    }
+    h2 {
+        text-align: center;
+    }
+`
 export default function Item() {
     const { howtoID } = useParams()
     const { user } = useContext(UserContext)
     const { howTos, setHowTos } = useContext(HowToContext)
     const [formValues, setFormValues] = useState(initialFormValues)
     const [formOpen, setFormOpen] = useState(false)
-    const [howTo, setHowTo] = useState(howTos.find(id => {
-        return id.id === parseInt(howtoID)
-    }))
+    const [howTo, setHowTo] = useState(null)
+
+    useEffect(() => {
+        axiosWithAuth().get(`/api/auth/howto/${howtoID}`)
+        .then((res) => {
+            console.log(res) 
+            setHowTo(res.data)
+        })
+    },[howtoID])
+
     const { push } = useHistory()
 
     const onInputChange = e => {
@@ -82,14 +100,14 @@ export default function Item() {
 
 
 return (
-    <div className='howto-wrapper'>
-        <div className='howto-header'>
+    <StyledPage className='howto-wrapper'>
+        {howTo && <div className='howto-header'>
             <h2>{howTo.name}</h2>
             <h3>{howTo.description}</h3>
             <h3>{howTo.category}</h3>
             <h3>{howTo.complexity}</h3>
             <p>{howTo.steps}</p>
-        </div>
+        </div>}
         {user.role === 2 && <div className='edit-delete-buttons'>
             {!formOpen && <button onClick={openEditForm}>Edit</button>}&nbsp;
             {!formOpen && <button onClick={deleteHowTo}>Delete</button>}<br/><br/>
@@ -137,7 +155,7 @@ return (
             <button>Save Changes</button>&nbsp;
             <button onClick={closeEditForm}>Cancel</button>
         </form>}
-    </div>
+    </StyledPage>
 )
 
 }
