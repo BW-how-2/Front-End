@@ -15,6 +15,7 @@ import UpdateUser from './components/UpdateUser';
 import './App.scss'; 
 import styled from 'styled-components'
 import HowToLogo from './components/HowToLogo.png'
+import HowTo from './components/HowTo'
 
 const StyledApp = styled.div`
 font-family: 'Khand', sans-serif;
@@ -78,7 +79,11 @@ function App() {
             <Route path='/howtos/:howtoID'>
               <HowToPage />
             </Route>
-​
+
+            <Route path='/how-tos/:howToId'>
+              <HowTo />
+            </Route>
+
             <Route path="/login">
               <Login user={user}/>
             </Route>
