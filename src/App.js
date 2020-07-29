@@ -45,6 +45,12 @@ function App() {
 
   const [userToUpdate, setUserToUpdate] = useState({});
 
+  const signOut = () => {
+    localStorage.removeItem('token');
+    localStorage.removeItem('user');
+    setUser(null);
+  }
+
   useEffect(() => {
     axiosWithAuth()
       .get('/api/auth/howto')
@@ -66,8 +72,8 @@ function App() {
             </div>
             <div>
               <nav>
-                <Link to='/login'>Login</Link>
-                {user.role === 2 && <CreatorNav />}
+                {user && <Link onClick={signOut} to='/login'>Sign Out</Link>}
+                {user?.role === 2 && <CreatorNav />}
               </nav>
             </div>
           </header>
