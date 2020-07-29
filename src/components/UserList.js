@@ -26,7 +26,7 @@ const initialValues = {
 
 const UserList = () => {
     const [users, setUsers] = useState([]);
-    const { user, setUser } = useContext(UserContext);
+    const { user, setUserToUpdate } = useContext(UserContext);
     const [addUser, setAddUser] = useState(initialValues);
     const history = useHistory();
 
@@ -55,7 +55,6 @@ const UserList = () => {
         axiosWithAuth()
         .post("/api/auth/register", newUser)
         .then(res => {
-            console.log(res)
             setUsers([...users, res.data.data])
             history.push('/userList')
         })
@@ -64,12 +63,16 @@ const UserList = () => {
         })
     }
 
+    const handleEdit = (user) => () => {
+        setUserToUpdate(user);
+        history.push('/updateUserProfile');
+    }
+
 
     const deleteUser = (id) => {
         axiosWithAuth()
         .delete(`/api/auth/users/${id}`)
-        .then(res => {
-            console.log(res)
+        .then(() => {
             history.push(`/userList`)
         })
         .catch(err => {
@@ -111,10 +114,9 @@ const UserList = () => {
                 {users.map(user => {
                     return (
                         <div className="user-profile" key={user.id}>
-                            <h3>{user.username}</h3>
-                            <p>{user.password}</p>
-                            <p>{user.role}</p>
-                            <button>Edit</button>
+                            <h3>Userame: {user.username}</h3>
+                            <p>Role:{user.role}</p>
+                            <button onClick={handleEdit(user)}>Edit</button>
                             <button onClick={() => deleteUser(user.id)}>Delete</button>
                         </div>
                     );
