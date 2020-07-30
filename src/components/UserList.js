@@ -27,6 +27,7 @@ const StyledUserListH2 = styled.h2`
 
 const StyledAddForm = styled.form`
     border: 2px solid #FCA311;
+    background: rgb(255, 221, 146);
     border-radius: 10px;
     padding-bottom: 25px;
     width: 500px;
@@ -52,7 +53,7 @@ const Button = styled.button`
     border: 1px solid black;
     background-color: white;
     margin: 3%;
-    padding: 1%;
+    padding: 5px 10px;
     border-radius: 5px;
 
     &:hover{

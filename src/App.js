@@ -108,12 +108,6 @@ function App() {
             </Route>
 ​
           </Switch>
-            {user && <footer>
-                <h4>Leaving so soon?</h4>
-                <Link to="/login">
-                    <button onClick={signOut}>Sign out</button>
-                </Link>
-            </footer>}
         </StyledApp>
       </HowToContext.Provider>
     </UserContext.Provider>
