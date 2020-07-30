@@ -22,7 +22,7 @@ const StyledUserListPage = styled.div`
 `;
 
 const StyledUserListH2 = styled.h2`
-    color: #black;
+    color: black;
 `;
 
 const StyledAddForm = styled.form`
@@ -40,7 +40,6 @@ const StyledListOfUsers = styled.div`
     align-items: center;
     width: 100%;
     margin: 4% 20%;
-    /* background-color: rgba(240, 240, 240, 0.822); */
 
     .user-items{
         display: flex;
