@@ -122,6 +122,7 @@ const Creator = () => {
                 type='text'
                 value={searchQuery}
                 onChange={onSearchQueryChange}
+                placeholder='Search...'
             />
             <div className='howTosList'>
                 {howTos.length > 0 && howTos.map(howTo => {

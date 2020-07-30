@@ -107,6 +107,7 @@ export default function SignUp(){
     }
 
     return(
+      <div className='form-container'>  
         <form onSubmit={handleSubmit}>
                 <Instructions> Please type a username:</Instructions>
                 <p className='error'>{errors.username}</p>
@@ -116,16 +117,32 @@ export default function SignUp(){
                 <p className='error'>{errors.password}</p>
                 <Input type='password' id='password' name='password' value={signUp.password} onChange={handleChange}></Input>
 
+<<<<<<< HEAD
                 <Instructions> Please select a role:</Instructions>
                 <Dropdown value={signUp.role} onChange={handleChange} name='role'>
                     <option disabled value=''>Select Role</option>
                     <option value='user'>User</option>
                     <option value='creator'>Creator</option>
                 </Dropdown>
+=======
+                    <p>Please select a role:</p>
+                    <select value={signUp.role} onChange={handleChange} name='role'>
+                        <option disabled value=''>Select Role</option>
+                        <option value='user'>User</option>
+                        <option value='creator'>Creator</option>
+                    </select>
+>>>>>>> 3804f56f4417cce37008d95ffb4974cad1856c7e
 
-                <br></br>
+                    <br></br>
 
+<<<<<<< HEAD
                 <Button onClick={handleSubmit}>Submit</Button>
         </form>
+=======
+                    <button onClick={handleSubmit}>Submit</button>
+            </form>
+            <p>Already have an account? <span onClick={() => history.push('/login')} className='link'>Log in</span>!</p>
+        </div>
+>>>>>>> 3804f56f4417cce37008d95ffb4974cad1856c7e
     )
 } 
