@@ -95,12 +95,7 @@ export default function SignUp(){
             localStorage.setItem('token', res.data.token)
             setUser(res.data.data)
             localStorage.setItem('user', JSON.stringify(res.data.data))
-            if(user.role === 2) {
-                history.push('/dashboard/creator')
-            }
-            else{
-                history.push('/dashboard')
-            }
+            history.push('dashboard');
         })
         .catch(err => {
             console.log(err)
