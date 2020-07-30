@@ -14,19 +14,23 @@ import styled from 'styled-components';
 // .delete ..... 	/api/auth/users/:id
 
 const StyledUserListPage = styled.div`
-width: auto;
-display: flex;
-flex-direction: column;
-justify-content: center;
-align-items: center;
+    width: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+`;
+
+const StyledUserListH2 = styled.h2`
+    color: black;
 `;
 
 const StyledAddForm = styled.form`
-border: 2px solid black;
-border-radius: 10px;
-padding-bottom: 25px;
-width: 500px;
-text-align: center;
+    border: 2px solid #FCA311;
+    border-radius: 10px;
+    padding-bottom: 25px;
+    width: 500px;
+    text-align: center;
 `;
 
 const StyledListOfUsers = styled.div`
@@ -36,7 +40,6 @@ const StyledListOfUsers = styled.div`
     align-items: center;
     width: 100%;
     margin: 4% 20%;
-    background-color: #EDF4F5;
 
     .user-items{
         display: flex;
@@ -53,7 +56,7 @@ const Button = styled.button`
     border-radius: 5px;
 
     &:hover{
-        background-color: orange;
+        background-color: #FCA311;
         color: white;
     }
 `;
@@ -130,7 +133,7 @@ const UserList = () => {
     return (
         <StyledUserListPage>
             <h1>Welcome back, {user.username}!</h1>
-            <h2>Add New User </h2>
+            <StyledUserListH2>Add New User</StyledUserListH2>
             <StyledAddForm onSubmit={handleSubmit}>
                 <p>Please enter a username</p>
                 <input
@@ -157,7 +160,7 @@ const UserList = () => {
                 <Button onClick={handleSubmit}>Submit</Button>
             </StyledAddForm>
             <StyledListOfUsers>
-            <h2>List of All Users</h2>
+            <StyledUserListH2>List of All Users</StyledUserListH2>
             <div className="user-items">
                 {users.map(user => {
                     return (
