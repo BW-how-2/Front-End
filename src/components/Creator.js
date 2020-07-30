@@ -65,6 +65,7 @@ const Creator = () => {
             .catch(err => {
                 console.log(err.response);
             })
+        closeForm();
     }
     
     return (
