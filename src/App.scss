@@ -1,3 +1,4 @@
+
 .error {
     color: red;
 }
@@ -15,11 +16,13 @@
     border-radius: 5px;
     box-shadow: 2px 2px 10px lightgrey;
     font-family: Arial, Helvetica, sans-serif;
-    margin: 5% 25%;
-    padding: 2% 0%;
-    width: auto;
+    width: 350px;
     background-color: #EDF4F5;
     color:black;
+}
+
+.how-to-card:hover{
+    background-color: lightgoldenrodyellow;
 }
 
 #dashh1 {
@@ -34,14 +37,52 @@ h2 {
     text-align: center;
     text-transform: uppercase;
     letter-spacing: .5px;
-    font-size: 1.5em;
+    font-size: 1em;
+    color:#FCA311;
+}
+
+h2:hover{
+    font-style: italic;
 }
 
 h3 {
     text-transform: capitalize;
     font-style: italic;
+    font-size: .9em;
+}
+
+p {
+    font-size: .9em;
 }
 
 #linksDash {
     text-decoration: none;
+    margin: 1% 1%;
 }
+
+#howTosList {
+    display:flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin: 2% 2%;
+    padding: 0% 10%;
+    justify-content: space-evenly;
+}
+
+#dashheader{
+    display:flex;
+    justify-content: space-around;
+    align-items: center;
+    margin: 0% 0%;
+    height: 35px;
+}
+
+#searchbar{
+    height: 30px;
+    width: 300px;
+}
+
+#searchbar:hover {
+    background-color:#FCA311;
+}
+

@@ -12,14 +12,17 @@ const User = () => {
     }
 
     return (
-        <div>
+        <div id='userBody'>
+        <div id='dashheader'>
             <h1 id='dashh1'>Dashboard</h1>
             <input 
                 type="text"
                 placeholder="Search..."
                 value={searchQuery}
                 onChange={onSearchQueryChange}
+                id='searchbar'
             />
+            </div>
             <div id='howTosList'>
                {howTos.length > 0 && howTos.map(howTo => {
                    const searchInput = `${howTo.name} ${howTo.description} ${howTo.category}`;

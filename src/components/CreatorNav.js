@@ -5,9 +5,11 @@ import styled from 'styled-components';
 const StyledCreatorNav = styled.div`
     display: flex;
     justify-content: space-evenly;
+    padding: 1% 0;
 
     a {
         color: inherit;
+        text-decoration: none;
     }
 `
 

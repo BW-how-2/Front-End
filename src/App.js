@@ -25,9 +25,11 @@ flex-direction: column;
 line-height:30px;
 text-align: center;
 
-img{
-  width: 200px;
-}
+  img{
+    width: 200px;
+    padding: 4% 0%;
+    
+  }
 
 /* nav {
   border: 1px solid grey;
