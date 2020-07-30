@@ -29,6 +29,7 @@ const Button = styled.button`
     margin-top: 2%;
     padding: 1% 2% 1% 2%;
     background-color: lightgrey;
+    border-radius: 15px;
 `
 
 const initialForm={
@@ -117,32 +118,18 @@ export default function SignUp(){
                 <p className='error'>{errors.password}</p>
                 <Input type='password' id='password' name='password' value={signUp.password} onChange={handleChange}></Input>
 
-<<<<<<< HEAD
-                <Instructions> Please select a role:</Instructions>
-                <Dropdown value={signUp.role} onChange={handleChange} name='role'>
-                    <option disabled value=''>Select Role</option>
-                    <option value='user'>User</option>
-                    <option value='creator'>Creator</option>
-                </Dropdown>
-=======
-                    <p>Please select a role:</p>
-                    <select value={signUp.role} onChange={handleChange} name='role'>
+                    <Instructions>Please select a role:</Instructions>
+                    <Dropdown value={signUp.role} onChange={handleChange} name='role'>
                         <option disabled value=''>Select Role</option>
                         <option value='user'>User</option>
                         <option value='creator'>Creator</option>
-                    </select>
->>>>>>> 3804f56f4417cce37008d95ffb4974cad1856c7e
+                    </Dropdown>
 
                     <br></br>
 
-<<<<<<< HEAD
-                <Button onClick={handleSubmit}>Submit</Button>
-        </form>
-=======
-                    <button onClick={handleSubmit}>Submit</button>
+                    <Button onClick={handleSubmit}>Submit</Button>
             </form>
             <p>Already have an account? <span onClick={() => history.push('/login')} className='link'>Log in</span>!</p>
         </div>
->>>>>>> 3804f56f4417cce37008d95ffb4974cad1856c7e
     )
 } 
