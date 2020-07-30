@@ -1,3 +1,7 @@
+body {
+    background-color: rgba(240, 240, 240, 0.822);;
+}
+
 .error {
     color: red;
 }
@@ -44,4 +48,9 @@ h3 {
 
 #linksDash {
     text-decoration: none;
+}
+
+.link {
+    cursor: pointer;
+    text-decoration: underline;
 }
