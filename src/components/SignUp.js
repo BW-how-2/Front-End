@@ -80,6 +80,7 @@ export default function SignUp(){
     }
 
     return(
+      <div className='form-container'>  
         <form onSubmit={handleSubmit}>
             <h1>Please Register</h1>
                 <p> Please type a username:</p>
@@ -90,16 +91,18 @@ export default function SignUp(){
                 <p className='error'>{errors.password}</p>
                 <input type='password' id='password' name='password' value={signUp.password} onChange={handleChange}></input>
 
-                <p>Please select a role:</p>
-                <select value={signUp.role} onChange={handleChange} name='role'>
-                    <option disabled value=''>Select Role</option>
-                    <option value='user'>User</option>
-                    <option value='creator'>Creator</option>
-                </select>
+                    <p>Please select a role:</p>
+                    <select value={signUp.role} onChange={handleChange} name='role'>
+                        <option disabled value=''>Select Role</option>
+                        <option value='user'>User</option>
+                        <option value='creator'>Creator</option>
+                    </select>
 
-                <br></br>
+                    <br></br>
 
-                <button onClick={handleSubmit}>Submit</button>
-        </form>
+                    <button onClick={handleSubmit}>Submit</button>
+            </form>
+            <p>Already have an account? <span onClick={() => history.push('/login')} className='link'>Log in</span>!</p>
+        </div>
     )
 } 
