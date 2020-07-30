@@ -124,7 +124,7 @@ const Creator = () => {
                 onChange={onSearchQueryChange}
                 placeholder='Search...'
             />
-            <div className='howTosList'>
+            <div id='howTosList'>
                 {howTos.length > 0 && howTos.map(howTo => {
                     const searchString = `${howTo.name} ${howTo.description} ${howTo.category}`;
                     if (searchString.toLowerCase().includes(searchQuery.toLowerCase()) || searchQuery === '') {
