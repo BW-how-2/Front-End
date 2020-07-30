@@ -23,9 +23,12 @@ a {
     border-radius: 5px;
     box-shadow: 2px 2px 10px lightgrey;
     font-family: Arial, Helvetica, sans-serif;
-    width: 350px;
+    width: 250px;
+    height: 250px;
     background-color: #EDF4F5;
     color:black;
+    padding-top: 15%;
+    padding-bottom: 1%;
 }
 
 .how-to-card:hover{
@@ -86,4 +89,12 @@ footer {
     display: flex;
     justify-content: space-between;
     margin: 10px 20px;
+}
+
+#howTosList {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    flex-wrap: wrap;
+    width: 100%;
 }
