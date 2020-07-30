@@ -2,6 +2,10 @@ body {
     background-color: rgba(240, 240, 240, 0.822);;
 }
 
+a {
+    color: inherit;
+}
+
 .error {
     color: red;
 }
@@ -58,4 +62,15 @@ footer {
 .link {
     cursor: pointer;
     text-decoration: underline;
+}
+
+.logo-container {
+    display: flex;
+    flex-direction: column;
+}
+
+.main-header {
+    display: flex;
+    justify-content: space-between;
+    margin: 10px 20px;
 }
