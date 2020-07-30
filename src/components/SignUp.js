@@ -3,6 +3,34 @@ import Axios from 'axios'
 import {UserContext} from '../contexts/UserContext'
 import {useHistory} from 'react-router-dom'
 import * as Yup from 'yup'
+import styled from 'styled-components'
+
+const Instructions = styled.p`
+   border: solid black 2px;
+   width: 12%;
+   margin-left: 44%;
+   border-radius: 15px;
+   background-color: #FCA311;
+`
+
+const Input = styled.input`
+    background-color: lightgrey;
+`
+
+const Dropdown = styled.select`
+    border: solid black 2px;
+    width: 12%;
+    margin-left: 15px;
+    border-radius: 15px;
+    background-color: lightgrey;
+`
+
+const Button = styled.button`
+    margin-top: 2%;
+    padding: 1% 2% 1% 2%;
+    background-color: lightgrey;
+    border-radius: 15px;
+`
 
 const initialForm={
     username: '',
@@ -82,25 +110,24 @@ export default function SignUp(){
     return(
       <div className='form-container'>  
         <form onSubmit={handleSubmit}>
-            <h1>Please Register</h1>
-                <p> Please type a username:</p>
+                <Instructions> Please type a username:</Instructions>
                 <p className='error'>{errors.username}</p>
-                <input id='username' name='username' value={signUp.username} onChange={handleChange}></input> 
+                <Input id='username' name='username' value={signUp.username} onChange={handleChange}></Input> 
 
-                <p>Please type a password:</p>
+                <Instructions> Please type a password</Instructions>
                 <p className='error'>{errors.password}</p>
-                <input type='password' id='password' name='password' value={signUp.password} onChange={handleChange}></input>
+                <Input type='password' id='password' name='password' value={signUp.password} onChange={handleChange}></Input>
 
-                    <p>Please select a role:</p>
-                    <select value={signUp.role} onChange={handleChange} name='role'>
+                    <Instructions>Please select a role:</Instructions>
+                    <Dropdown value={signUp.role} onChange={handleChange} name='role'>
                         <option disabled value=''>Select Role</option>
                         <option value='user'>User</option>
                         <option value='creator'>Creator</option>
-                    </select>
+                    </Dropdown>
 
                     <br></br>
 
-                    <button onClick={handleSubmit}>Submit</button>
+                    <Button onClick={handleSubmit}>Submit</Button>
             </form>
             <p>Already have an account? <span onClick={() => history.push('/login')} className='link'>Log in</span>!</p>
         </div>
