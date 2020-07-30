@@ -53,7 +53,7 @@ const Button = styled.button`
     border: 1px solid black;
     background-color: white;
     margin: 3%;
-    padding: 1%;
+    padding: 5px 10px;
     border-radius: 5px;
 
     &:hover{
