@@ -32,7 +32,7 @@ a {
 }
 
 .how-to-card:hover{
-    background-color: lightgoldenrodyellow;
+    background-color: rgb(255, 221, 146);
 }
 
 #dashh1 {
@@ -49,10 +49,6 @@ h2 {
     letter-spacing: .5px;
     font-size: 1em;
     color:#FCA311;
-}
-
-h2:hover{
-    font-style: italic;
 }
 
 h3 {
@@ -112,4 +108,8 @@ footer {
 
 #searchbar {
     width:200px;
+}
+
+#searchbar:hover {
+    background-color: #FCA311;
 }
