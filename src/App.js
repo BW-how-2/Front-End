@@ -66,13 +66,13 @@ function App() {
     <UserContext.Provider value={{ user, setUser, userToUpdate, setUserToUpdate }}>
       <HowToContext.Provider value={{ howTos, setHowTos }}>
         <StyledApp className='App'>
-          <header>
-            <div>
+          <header className='main-header'>
+            <div className='logo-container'>
               <a href="https://condescending-austin-39ab5f.netlify.app/index.html"><img id='HowToLogo' src={HowToLogo} alt='Logo'/></a>
+              {user && <Link onClick={signOut} to='/login'>Sign Out</Link>}
             </div>
             <div>
               <nav>
-                {user && <Link onClick={signOut} to='/login'>Sign Out</Link>}
                 {user?.role === 2 && <CreatorNav />}
               </nav>
             </div>

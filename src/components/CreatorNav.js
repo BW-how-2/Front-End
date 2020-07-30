@@ -22,6 +22,7 @@ const StyledCreatorNav = styled.div`
         text-decoration: none;
         letter-spacing: 2px;
         font-size: 14px;
+        margin: 15px;
     }
 `
 
