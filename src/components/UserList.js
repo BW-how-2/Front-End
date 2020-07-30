@@ -27,7 +27,7 @@ const StyledUserListH2 = styled.h2`
 
 const StyledAddForm = styled.form`
     border: 2px solid #FCA311;
-    background: white;
+    background: rgb(255, 221, 146);
     border-radius: 10px;
     padding-bottom: 25px;
     width: 500px;
