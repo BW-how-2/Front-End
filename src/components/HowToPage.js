@@ -17,15 +17,15 @@ const StyledPage = styled.div`
     font-family: Arial, Helvetica, sans-serif;
     border-radius: 3%;
     box-shadow: 2px 2px 10px lightgrey;
-    margin: 5% 15%;
+    margin: 0 15%;
     padding: 1% 5%;
     background:#EDF4F5;
-
+    /* box-shadow: 0px 1px 10px 0px lightgrey; */
     h2 {
         text-align: center;
         text-transform: uppercase;
         letter-spacing: 2px;
-        font-size: 2.5em;
+        font-size: 1.5em;
         text-decoration: underline;
     }
 
@@ -38,6 +38,11 @@ const StyledPage = styled.div`
         display:flex;
         flex-direction: row;
         justify-content: space-evenly
+    }
+
+    .howto-card {
+        /* border: 1px solid red; */
+        padding-top:1.5%;
     }
 `
 export default function Item() {
@@ -117,7 +122,7 @@ export default function Item() {
 
 return (
     <StyledPage className='howto-wrapper'>
-        {howTo && <div className='howto-header'>
+        {howTo && <div className='howto-card'>
             <h2>HOW TO {howTo.name}</h2>
             <h3>{howTo.description}</h3>
             <div id='howToinfo'>

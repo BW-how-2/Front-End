@@ -5,10 +5,15 @@ import styled from 'styled-components';
 const StyledCreatorNav = styled.div`
     display: flex;
     justify-content: space-evenly;
+<<<<<<< HEAD
+    padding: 1% 0;
+=======
     margin: 15px auto;
+>>>>>>> 7018c3cd8c2df4fa9b68869e98c1a9c1d634eff2
 
     a {
         color: inherit;
+        text-decoration: none;
     }
 
     .nav-link {
