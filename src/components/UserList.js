@@ -3,6 +3,8 @@ import { axiosWithAuth } from '../utils/axiosWithAuth';
 import { useHistory } from 'react-router-dom';
 import { UserContext } from '../contexts/UserContext';
 import styled from 'styled-components';
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 //This component will return a list of all users. 
 // .get ..... /api/auth/users
@@ -68,11 +70,15 @@ const initialValues = {
     role: ""
 };
 
+toast.configure()
 const UserList = () => {
     const [users, setUsers] = useState([]);
     const { user, setUserToUpdate } = useContext(UserContext);
     const [addUser, setAddUser] = useState(initialValues);
     const history = useHistory();
+    const notify = () => {
+        toast.warning('Success! New user added.', {position: toast.POSITION.TOP_RIGHT})
+    }
 
     useEffect(() => {
         axiosWithAuth()
@@ -101,6 +107,7 @@ const UserList = () => {
         .then(res => {
             setUsers([...users, res.data.data])
             history.push('/userList')
+            setAddUser(initialValues)
         })
         .catch(err => {
             console.log(err.response)
@@ -158,7 +165,7 @@ const UserList = () => {
                     <option value='user'>User</option>
                     <option value='creator'>Creator</option>
                 </select>
-                <Button onClick={handleSubmit}>Submit</Button>
+                <Button onClick={handleSubmit, notify}>Submit</Button>
             </StyledAddForm>
             <StyledListOfUsers>
             <StyledUserListH2>List of All Users</StyledUserListH2>
