@@ -136,6 +136,9 @@ const Enter = () => {
           Login
         </button>
       </div>
+      <div classname='sign-up-link-container'>
+        <p>Don't have an account? <span onClick={() => push('/signup')} className='link'>Sign up</span>!</p>
+      </div>
     </StyledLogin>
   );
 };
