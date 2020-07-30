@@ -129,7 +129,7 @@ const Creator = () => {
                 {howTos.length > 0 && howTos.map(howTo => {
                     const searchString = `${howTo.name} ${howTo.description} ${howTo.category}`;
                     if (searchString.toLowerCase().includes(searchQuery.toLowerCase()) || searchQuery === '') {
-                        return <Link id='linksDash' to={`/how-tos/${howTo.id}`} key={howTo.id}>
+                        return <Link id='linksDash' to={`/howtos/${howTo.id}`} key={howTo.id}>
                                     <div className='how-to-card'>
                                         <h2>{howTo.name}</h2>
                                         <h3>{howTo.description}</h3>
