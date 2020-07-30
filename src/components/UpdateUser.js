@@ -2,6 +2,25 @@ import React, { useContext } from 'react';
 import { UserContext } from '../contexts/UserContext';
 import { axiosWithAuth } from '../utils/axiosWithAuth';
 import { useHistory } from 'react-router-dom';
+import styled from 'styled-components';
+
+const Button = styled.button`
+    border: 1px solid black;
+    background-color: white;
+    margin: 3%;
+    padding: 1%;
+    border-radius: 5px;
+
+    &:hover{
+        background-color: #FCA311;
+        color: white;
+    }
+`;
+
+const StyledDiv = styled.div`
+    height: 60vh;
+    padding-top: 100px;
+`;
 
 const UpdateUser = () => {
     const { userToUpdate, setUserToUpdate } = useContext(UserContext);
@@ -24,7 +43,7 @@ const UpdateUser = () => {
     }
 
     return (
-        <div>
+        <StyledDiv>
             <form onSubmit={handleSubmit}>
             <h2> Update User Profile Information Below:</h2>
             <p>Please edit username:</p>
@@ -50,10 +69,10 @@ const UpdateUser = () => {
                 <option value='creator'>Creator</option>
             </select> */}
             <div>
-                <button style={{margin: '2%', padding: '1%', background: 'lightseagreen', color: 'white'}}>Update user profile</button>
+                <Button>Update user profile</Button>
             </div>
         </form>
-        </div>
+        </StyledDiv>
     )
 };
 
